@@ -9,6 +9,16 @@ public class Turma {
 	Professor professor;
 	List<Horario> horarios;
 	
+	public Turma(Professor professor, List<Horario> horarios, int nroAlunos)
+	{
+		
+	}
+	
+	public Professor getProfessor()
+	{
+		
+	}
+	
 	
 
 }
