@@ -12,9 +12,15 @@ public class Sala {
 	Map<Horario, Turma> agenda;
 	Map<Integer, Boolean> recurso;
 	
+	public Sala(int capacidade, boolean disponivel, String tipo, String id, Map<Horario, Turma> agenda, Map<Integer, Boolean> recurso)
+	{
+		
+	}
 	
-	
-	
+	public int getSalaSatisfatoria()
+	{
+		
+	}
 	
 	
 
