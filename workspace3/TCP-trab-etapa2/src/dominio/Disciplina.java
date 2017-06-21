@@ -10,6 +10,12 @@ public class Disciplina {
 	List<Integer> requisitos;
 	
 	
+	public Disciplina(){};
 	
+	public void getTurmasMesmoHorario(){};
+	
+	public int getCapacidadeMesmoHorario();
+	
+	public List<int> getRequisitos(){};
 
 }
