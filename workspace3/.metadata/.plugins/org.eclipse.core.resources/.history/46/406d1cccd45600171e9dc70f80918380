@@ -9,5 +9,5 @@ public class Hora {
 	
 	public int getHoras(){}
 	
-	public int getMinutos(){}
+	public int getMinutos(){};
 }

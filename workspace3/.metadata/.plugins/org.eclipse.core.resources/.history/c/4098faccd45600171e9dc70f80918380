@@ -12,10 +12,10 @@ public class Disciplina {
 	
 	public Disciplina(){};
 	
-	public void getTurmasMesmoHorario(){}
+	public void getTurmasMesmoHorario(){};
 	
-	public int getCapacidadeMesmoHorario(){}
+	public int getCapacidadeMesmoHorario();
 	
-	public List<int> getRequisitos(){}
+	public List<int> getRequisitos(){};
 
 }
