@@ -11,5 +11,27 @@ public class Disciplina {
 	String id;
 	String nome;
 	
+	public Disciplina(List<Turma> turmas, List<Integer> requisitos, String id, String nome)
+	{
+		
+	}
+	
+	public void getTurmasMesmoHorario()
+	{
+		
+	}
+	
+	public int getCapacidadeMesmoHorario()
+	{
+		
+		return;
+	}
+	
+	public List<Integer> getRequisitos()
+	{
+		
+		return;
+	}
+	
 
 }
