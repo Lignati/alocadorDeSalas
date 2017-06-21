@@ -1,0 +1,10 @@
+package dominio;
+
+public class Horario {
+	
+	Hora horaInicio;
+	String diaSemana;
+	int duracao;
+	
+
+}

@@ -1,0 +1,8 @@
+package dominio;
+
+public class Turma {
+	
+	professor professor;
+	int nroAlunos;
+
+}

@@ -1,0 +1,19 @@
+package dominio;
+
+import java.util.Map;
+
+public class Sala {
+	
+	String tipo;
+	String id;
+	
+	Map<Integer, Boolean> recurso;
+	
+	int capacidade;
+	boolean disponivel;
+	
+	
+	
+	
+
+}

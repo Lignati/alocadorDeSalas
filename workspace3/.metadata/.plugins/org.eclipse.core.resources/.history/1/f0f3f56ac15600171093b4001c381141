@@ -1,0 +1,7 @@
+package dominio;
+
+public class predio {
+	
+	String id;
+
+}

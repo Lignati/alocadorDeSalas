@@ -1,0 +1,8 @@
+package arquitetura;
+
+public class predio {
+	
+	String id;
+	
+
+}
