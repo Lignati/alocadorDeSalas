@@ -18,12 +18,7 @@ public class Turma {
 	{
 		
 	}
-	public List<Horario>getHorarios(){
-		
-		return horarios;
-		
-		
-	}
+	
 	
 
 }

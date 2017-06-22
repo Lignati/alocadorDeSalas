@@ -22,7 +22,7 @@ public class Disciplina {
 		Map<Horario,Turma> mapaHorarios =  new HashMap<Horario,Turma>();
 		for (int elemento = 0;elemento < turmas.size();elemento++  )	{
 			for(int j = 0; j < turmas.get(elemento).getHorarios().size();j++){
-				mapaHorarios.put(turmas.get(elemento).getHorarios().get(j),elemento);
+				mapaHorarios.put(turmas.get(elemento).getHorario(),elemento);
 			
 			}
 		}
