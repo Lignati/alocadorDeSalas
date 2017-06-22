@@ -19,22 +19,22 @@ public class Horario {
 	
 	public Hora getHoraInicio(){
 		
-		return horaInicio;
+		return this.horaInicio;
 	}
 	
 	public Hora getHoraFim(){
 		
-		return horaFim;
+		return this.horaFim;
 	}
 	
 	public int getDuracaoMinutos(){
 		
-		return (horaFim.getHoras() - horaInicio.getHoras())*60 + (horaFim.getMinutos() - horaInicio.getMinutos());
+		return (this.horaFim.getHoras() - this.horaInicio.getHoras())*60 + (this.horaFim.getMinutos() - this.horaInicio.getMinutos());
 		
 	}
 	public String getDiaSemana (){
 		
-		return diaSemana;
+		return this.diaSemana;
 		
 	}
 }

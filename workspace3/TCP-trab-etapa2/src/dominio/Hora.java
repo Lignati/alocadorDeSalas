@@ -5,9 +5,21 @@ public class Hora {
 	int horas;
 	int minutos;
 	
-	public Hora();
+	public Hora(int horas, int minutos){
+		
+		this.horas   = horas;
+		
+		this.minutos = minutos;
+		
+	}
 	
-	public int getHoras(){}
+	public int getHoras(){
+		
+		return this.horas;
+	}
 	
-	public int getMinutos(){}
+	public int getMinutos(){
+		return this.minutos;
+		
+	}
 }
