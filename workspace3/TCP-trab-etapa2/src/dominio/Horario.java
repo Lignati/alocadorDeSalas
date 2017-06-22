@@ -7,12 +7,34 @@ public class Horario {
 	Hora horaInicio;
 	String diaSemana;
 	
-	public Horario(){}
+	public Horario(Hora horaInicio, Hora horaFim, String diaSemana){
+		
+		this.horaInicio = horaInicio;
+		
+		this.horaFim    = horaFim;
+		
+		this.diaSemana  = diaSemana;
+		
+	}
 	
-	public Hora getHoraInicio(){}
+	public Hora getHoraInicio(){
+		
+		return horaInicio;
+	}
 	
-	public Hora getHoraFim(){}
+	public Hora getHoraFim(){
+		
+		return horaFim;
+	}
 	
-	public int getDuracao(){}
-
+	public int getDuracaoMinutos(){
+		
+		return (horaFim.getHoras() - horaInicio.getHoras())*60 + (horaFim.getMinutos() - horaInicio.getMinutos());
+		
+	}
+	public String getDiaSemana (){
+		
+		return diaSemana;
+		
+	}
 }
