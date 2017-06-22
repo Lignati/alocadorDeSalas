@@ -1,0 +1,17 @@
+package interfaceXML;
+import java.util.List;
+import java.util.Map;
+import dominio.*;
+public class AbreArquivo {
+	
+	List<Predio>       predios;
+	List<Disciplina>   disciplinas;
+	Map<Integer,String>idRecusros;
+	
+	public AbreArquivo(){
+		List <Predio> predios =  new ArrayList <Predio>();
+		
+		
+		
+	}
+}
