@@ -1,0 +1,5 @@
+package interfaceXML;
+
+public abstract class Arquivo {
+
+}
