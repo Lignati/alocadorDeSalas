@@ -1,6 +1,6 @@
 package dominio;
 
-import java.util.Map;
+import java.util.*;
 
 public class Sala {
 	
@@ -8,18 +8,39 @@ public class Sala {
 	boolean disponivel;
 	
 	String tipo;
-	String id;
+	int id;
 	Map<Horario, Turma> agenda;
 	Map<Integer, Boolean> recurso;
 	
-	public Sala(int capacidade, boolean disponivel, String tipo, String id, Map<Horario, Turma> agenda, Map<Integer, Boolean> recurso)
+	public Sala(int capacidade, boolean disponivel, String tipo, int id, Map<Horario, Turma> agenda, Map<Integer, Boolean> recurso)
 	{
+		this.capacidade = capacidade;
+		this.disponivel = disponivel;
+		this.tipo = tipo;
+		this.id = id;
+		this.agenda = new HashMap<Horario, Turma>();
+		this.recurso = new HashMap<Integer, Boolean>();
 		
 	}
 	
-	public int getSalaSatisfatoria()
+	public boolean getIntegerRecurso(int tipoRecurso)
+	{
+		if (recurso.get(tipoRecurso) == true)
+			return true;
+		
+		return false;
+	}
+	
+	public int getSalaSatisfatoria(Map<Predio, Sala> todasSalas)
 	{
 		
+		
+		
+	}
+	
+	public int getIDSala()
+	{
+		return this.id;
 	}
 	
 	
