@@ -1,6 +1,8 @@
 package dominio;
 
 import java.util.*;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Sala {
 	
@@ -31,6 +33,16 @@ public class Sala {
 		return false;
 	}
 	
+	public int getNumeroRecursos(Map<Integer, Boolean> recursos)
+	{
+		int cont = 0;
+		Set<Integer> chaves = recursos.keySet();
+		
+		
+		
+		
+		return cont;
+	}
 	
 	public int getIDSala()
 	{
