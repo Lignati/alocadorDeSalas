@@ -1,14 +1,43 @@
 package dominio;
 
-import java.util.List;
+import java.util.*;
 
 public class Predio {
 	
 	List<Sala> salas;
 	String id;
 	
-	public Predio(){}
-	public void atualizaSalas(listas<Sala> listaSalas){}
-	public List<Sala> getSalasRequisitos(){}
+	
+	public Predio(List<Sala> salas, String id)
+	{
+		this.salas = new ArrayList<Sala>();
+		this.id = id;
+		
+	}
+	
+	
+	public void atualizaSalas(List<Sala> listaSalas)
+	{
+		
+	}
+	
+	
+	
+	public Map<Sala, Integer> getSalasRequisitos(List<Sala> salas, Map<Sala, Integer> salasSatisfatorias)
+	{
+		
+		for (int i=0; i<this.salas.size(); i++)
+		{
+			for(int j=0; j<this.salas.get(i).recurso.size(); j++)
+			{
+				if (this.salas.get(i).getIntegerRecurso(j) == true)
+				{
+					salasSatisfatorias.put(salas.get(i), j);
+				}
+			}
+		}
+	
+		return salasSatisfatorias;
+	}
 
 }
