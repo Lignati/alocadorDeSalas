@@ -31,6 +31,12 @@ public class Sala {
 		return false;
 	}
 	
+	public int getSalaSatisfatoria(Map<Predio, Sala> todasSalas)
+	{
+		
+		
+		
+	}
 	
 	public int getIDSala()
 	{

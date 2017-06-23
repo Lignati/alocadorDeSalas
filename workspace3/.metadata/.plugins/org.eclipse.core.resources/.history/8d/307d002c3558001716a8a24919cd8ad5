@@ -15,11 +15,11 @@ public class Turma {
 	
 	public Professor getProfessor()
 	{
-		return this.professor;
+		return Professor;
 	}
 	public List<Horario>getHorarios(){
 		
-		return this.horarios;
+		return horarios;
 		
 		
 	}
