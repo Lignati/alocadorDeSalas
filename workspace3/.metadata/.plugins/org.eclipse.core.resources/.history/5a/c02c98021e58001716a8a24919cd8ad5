@@ -22,39 +22,18 @@ public class Disciplina {
 		Map<Horario,Turma> mapaHorarios =  new HashMap<Horario,Turma>();
 		for (int elemento = 0;elemento < turmas.size();elemento++  )	{
 			for(int j = 0; j < turmas.get(elemento).getHorarios().size();j++){
-				mapaHorarios.put(turmas.get(elemento).getHorarios().get(j),turmas.get(elemento));
+				mapaHorarios.put(turmas.get(elemento).getHorarios().get(j),elemento);
 			
 			}
 		}
-		return mapaHorarios;
 			
 		
 		
 	}
 	
-	public int getCapacidadeMesmoHorario(Horario horario, Professor professor){
-		int capacidade = 0;
-		for(int i =0;i< turmas.size();i++){
-			for(int j = 0; j< turmas.get(i).getHorarios().size(); j++){
-			
-				if((turmas.get(i).getProfessor().getID() == professor.id) && turmas.get(i).getHorarios().get(j).getStringHorario().equals(horario.getStringHorario()) ){
-					capacidade += turmas.get(i).getNroAlunos();
-					
-				}
-			}
-			
-		}
-		
-		return capacidade;
-	}
+	public int getCapacidadeMesmoHorario(){}
 	
-	public List<Integer> getRequisitos(){
-		
-		return requisitos;
-		
-		
-		
-	}
+	public List<int> getRequisitos(){}
 	
 	
 

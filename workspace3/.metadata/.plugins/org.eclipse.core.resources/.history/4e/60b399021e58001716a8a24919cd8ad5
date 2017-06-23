@@ -5,6 +5,7 @@ import java.util.List;
 public class Turma {
 	
 	int nroAlunos;
+	
 	Professor professor;
 	List<Horario> horarios;
 	
@@ -15,17 +16,12 @@ public class Turma {
 	
 	public Professor getProfessor()
 	{
-		return Professor;
+		
 	}
 	public List<Horario>getHorarios(){
 		
 		return horarios;
 		
-		
-	}
-	public int getNroAlunos(){
-		
-		return this.nroAlunos;
 		
 	}
 	

@@ -37,10 +37,4 @@ public class Horario {
 		return this.diaSemana;
 		
 	}
-	public String getStringHorario(){
-		
-		return this.horaInicio.toString() + this.horaFim.toString() + this.diaSemana;
-		
-		
-	}
 }

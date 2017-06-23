@@ -16,8 +16,5 @@ public class AbreArquivo {
 		this.nome = nome;
 	}
 	
-	public void montaListaPredios(){
-		
-		return;
-	}
+	
 }

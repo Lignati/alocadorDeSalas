@@ -13,7 +13,7 @@ public class Professor {
 	public int getID()
 	{
 		
-		return id;
+		return;
 	}
 
 }
