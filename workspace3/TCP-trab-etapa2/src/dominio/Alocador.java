@@ -17,6 +17,9 @@ public class Alocador {
 	
 	public Alocador(List<Predio> predios, List<Disciplina> disciplinas, Map<Integer, String> recursos)
 	{
+		this.predios = predios;
+		this.disciplinas = disciplinas;
+		this.recursos = recursos;
 		
 	}
 	
