@@ -33,13 +33,18 @@ public class Sala {
 		return false;
 	}
 	
-	public int getNumeroRecursos(Map<Integer, Boolean> recursos)
+	public int getNumeroRecursos()
 	{
 		int cont = 0;
-		Set<Integer> chaves = recursos.keySet();
+		Set<Integer> chaves = this.recurso.keySet();
 		
-		
-		
+		for(Iterator<Integer> iterator = chaves.iterator(); iterator.hasNext();)
+		{
+			Integer chave = iterator.next();
+			Boolean validade = (Boolean)recurso.get(chave);
+			if(validade == true)
+				cont++;
+		}
 		
 		return cont;
 	}
