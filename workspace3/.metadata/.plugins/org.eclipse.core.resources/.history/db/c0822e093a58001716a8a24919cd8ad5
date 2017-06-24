@@ -10,7 +10,7 @@ public class Disciplina {
 	List<Integer> requisitos;
 	
 	
-	public Disciplina(String nome, String id){
+	public Disciplina(String nome, String id,List<Turma> turmas, List<Integer> requisitos){
 		
 		this.nome   = nome;
 		this.id     = id;
@@ -32,12 +32,12 @@ public class Disciplina {
 		
 	}
 	
-	public int getCapacidadeMesmoHorario(Horario horario, String professor){
+	public int getCapacidadeMesmoHorario(Horario horario, Professor professor){
 		int capacidade = 0;
 		for(int i =0;i< turmas.size();i++){
 			for(int j = 0; j< turmas.get(i).getHorarios().size(); j++){
 			
-				if((turmas.get(i).getProfessor().equals(professor))  && (turmas.get(i).getHorarios().get(j).getStringHorario().equals(horario.getStringHorario())) ){
+				if((turmas.get(i).getProfessor().getID() == professor.id) && turmas.get(i).getHorarios().get(j).getStringHorario().equals(horario.getStringHorario()) ){
 					capacidade += turmas.get(i).getNroAlunos();
 					
 				}
@@ -51,13 +51,11 @@ public class Disciplina {
 	public List<Integer> getRequisitos(){
 		
 		return requisitos;
-			
-	}
-	public void setTurmas(List<Turma> novaListaTurmas){
 		
-		this.turmas = novaListaTurmas;
+		
 		
 	}
+	
 	
 
 }
