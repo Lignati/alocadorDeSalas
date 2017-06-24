@@ -16,13 +16,13 @@ public class Disciplina {
 		this.id     = id;
 		this.turmas = new ArrayList<Turma>();
 		this.requisitos = new ArrayList<Integer>();
-	}
+	};
 	
-	public Map<Horario,Turma> getTurmasMesmoHorario(){
+	public Map<Horario,Turma> getTurmasMesmoHorario(List<Turma> turmas){
 		Map<Horario,Turma> mapaHorarios =  new HashMap<Horario,Turma>();
-		for (int elemento = 0;elemento < this.turmas.size();elemento++  )	{
-			for(int j = 0; j < this.turmas.get(elemento).getHorarios().size();j++){
-				mapaHorarios.put(this.turmas.get(elemento).getHorarios().get(j),this.turmas.get(elemento));
+		for (int elemento = 0;elemento < turmas.size();elemento++  )	{
+			for(int j = 0; j < turmas.get(elemento).getHorarios().size();j++){
+				mapaHorarios.put(turmas.get(elemento).getHorarios().get(j),turmas.get(elemento));
 			
 			}
 		}
