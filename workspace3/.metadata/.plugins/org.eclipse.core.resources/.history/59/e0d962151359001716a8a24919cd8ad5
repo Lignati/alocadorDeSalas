@@ -25,17 +25,20 @@ public class AbreArquivo {
 		this.nome = nome;
 	}
 	
-	public List<Disciplina> montaListaDisciplinas(String nomeArquivo){
+	public void montaListaDisciplinas(){
 		  Disciplina novaDisciplina;
-		  List<Disciplina> novaListaDisciplinas = new ArrayList <Disciplina>();
+		  
 	      try {	
-		         File inputFile = new File("nomeArquivo.xml");
+		         File inputFile = new File("tenis.xml");
 		         DocumentBuilderFactory dbFactory 
 		            = DocumentBuilderFactory.newInstance();
 		         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		         Document doc = dBuilder.parse(inputFile);
 		         doc.getDocumentElement().normalize();
+		         System.out.println("Root element :" 
+		            + doc.getDocumentElement().getNodeName());
 		         NodeList disciplinaXMLList = doc.getElementsByTagName("course");
+		         System.out.println("----------------------------");
 		         for (int i = 0; i < disciplinaXMLList.getLength(); i++) {
 		            Node nodoXMLDisciplina = disciplinaXMLList.item(i);
 		            if (nodoXMLDisciplina.getNodeType() == Node.ELEMENT_NODE) {
@@ -43,9 +46,10 @@ public class AbreArquivo {
 
 		               novaDisciplina = new Disciplina(elementoDisciplina.getAttribute("name"), elementoDisciplina.getAttribute("id"));
 		             
-		              List<Turma> novaListaTurmas = new ArrayList <Turma>();
+		              List novaListaTurmas = new ArrayList<Turma>();
 		              Turma novaTurma;
 		  	         NodeList turmasXMLList = doc.getElementsByTagName("group");
+			         System.out.println("----------------------------");
 			         for (int j = 0; j < turmasXMLList.getLength(); j++) {
 			            Node nodoXMLTurma = turmasXMLList.item(j);
 			            if (nodoXMLTurma.getNodeType() == Node.ELEMENT_NODE) {
@@ -53,18 +57,17 @@ public class AbreArquivo {
 			              
 			               novaTurma = new Turma(elementoTurma.getAttribute("tecaher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
 			               
-			               novaListaTurmas.add(novaTurma);
+			               
 			            }
-			            
 			        
 			         }
-			         novaListaDisciplinas.add(novaDisciplina);
+			         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");        
 		               
 		            }
 		         }
 		      } catch (Exception e) {
 		         e.printStackTrace();
 		      }
-		return novaListaDisciplinas;
+		return;
 	}
 }
