@@ -27,7 +27,7 @@ public class AbreArquivo {
 	
 	public Map<Integer, Boolean> montaRecursos(String recursos)
 	{
-		int nroRecurso, j=0;
+		int nroRecurso;
 		String aux = null;
 		Map<Integer, Boolean> mapaRecursos;
 		
@@ -35,9 +35,8 @@ public class AbreArquivo {
 		
 		for(int i=0; i<recursos.length(); i++)
 		{
-			aux = recursos.substring(j, j);
+			aux = recursos.substring(i, i+1);
 			nroRecurso = Integer.parseInt(aux);
-			j += 3;
 			
 			mapaRecursos.put(nroRecurso, true);
 		}
