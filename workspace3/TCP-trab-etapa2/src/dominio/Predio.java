@@ -8,7 +8,7 @@ public class Predio {
 	String id;
 	
 	
-	public Predio(List<Sala> salas, String id)
+	public Predio( String id)
 	{
 		this.salas = new ArrayList<Sala>();
 		this.id = id;
