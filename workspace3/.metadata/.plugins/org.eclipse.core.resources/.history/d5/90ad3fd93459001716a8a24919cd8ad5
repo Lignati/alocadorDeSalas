@@ -67,48 +67,4 @@ public class AbreArquivo {
 		      }
 		return novaListaDisciplinas;
 	}
-	public List<Predio> montaListaPredios(){
-		  Predio novoPredio;
-		  List<Predio> novaListaPredios = new ArrayList <Predio>();
-	      try {	
-		         File inputFile = new File("nomeArquivo.xml");
-		         DocumentBuilderFactory dbFactory 
-		            = DocumentBuilderFactory.newInstance();
-		         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		         Document doc = dBuilder.parse(inputFile);
-		         doc.getDocumentElement().normalize();
-		         NodeList predioXMLList = doc.getElementsByTagName("building");
-		         for (int i = 0; i < predioXMLList.getLength(); i++) {
-		            Node nodoXMLPredio = predioXMLList.item(i);
-		            if (nodoXMLPredio.getNodeType() == Node.ELEMENT_NODE) {
-		               Element elementoPredio = (Element) nodoXMLPredio;
-
-		               novoPredio = new Predio(elementoPredio.getAttribute("id"));
-		              List<Turma> novaListaTurmas = new ArrayList <Turma>();
-		              Turma novaTurma;
-		  	         NodeList turmasXMLList = doc.getElementsByTagName("group");
-			         for (int j = 0; j < turmasXMLList.getLength(); j++) {
-			            Node nodoXMLTurma = turmasXMLList.item(j);
-			            if (nodoXMLTurma.getNodeType() == Node.ELEMENT_NODE) {
-			               Element elementoTurma = (Element) nodoXMLTurma;
-			              
-			               novaTurma = new Turma(elementoTurma.getAttribute("tecaher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
-			               
-			               novaListaTurmas.add(novaTurma);
-			            }
-			            
-			        
-			         }
-			         novaListaDisciplinas.add(novaDisciplina);
-		               
-		            }
-		         }
-		      } catch (Exception e) {
-		         e.printStackTrace();
-		      }
-		return novaListaDisciplinas;
-		
-		
-		
-	}
 }
