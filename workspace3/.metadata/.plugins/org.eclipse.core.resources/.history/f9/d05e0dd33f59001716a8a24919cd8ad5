@@ -10,7 +10,7 @@ public class Sala {
 	boolean disponivel;
 	
 	String tipo;
-	String id;
+	string id;
 	Map<Horario, Turma> agenda;
 	Map<Integer, Boolean> recurso;
 	String note;
@@ -51,7 +51,7 @@ public class Sala {
 		return cont;
 	}
 	
-	public String getIDSala()
+	public int getIDSala()
 	{
 		return this.id;
 	}
