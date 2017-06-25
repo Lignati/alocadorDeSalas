@@ -10,11 +10,13 @@ public class Sala {
 	boolean disponivel;
 	
 	String tipo;
-	int id;
+	String id;
 	Map<Horario, Turma> agenda;
 	Map<Integer, Boolean> recurso;
+	String note;
 	
-	public Sala(int capacidade, boolean disponivel, String tipo, int id, Map<Horario, Turma> agenda, Map<Integer, Boolean> recurso)
+	
+	public Sala(int capacidade, boolean disponivel, String tipo, String id, Map<Integer, Boolean> recurso)
 	{
 		this.capacidade = capacidade;
 		this.disponivel = disponivel;
@@ -49,7 +51,7 @@ public class Sala {
 		return cont;
 	}
 	
-	public int getIDSala()
+	public String getIDSala()
 	{
 		return this.id;
 	}
