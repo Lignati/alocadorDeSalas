@@ -25,23 +25,6 @@ public class AbreArquivo {
 		this.nome = nome;
 	}
 	
-	public Map<Integer, Boolean> montaRecursos(List<String> recursos)
-	{
-		int nroRecurso;
-		Map<Integer, Boolean> mapaRecursos;
-		
-		mapaRecursos = new HashMap<Integer, Boolean>();
-		
-		for(int i=0; i<recursos.size(); i++)
-		{
-			nroRecurso = Integer.parseInt(recursos.get(i));
-			
-			mapaRecursos.put(nroRecurso, true);
-		}
-		
-		return mapaRecursos;
-	}
-	
 	public List<Disciplina> montaListaDisciplinas(String nomeArquivo){
 		  Disciplina novaDisciplina;
 		  List<Disciplina> novaListaDisciplinas = new ArrayList <Disciplina>();
