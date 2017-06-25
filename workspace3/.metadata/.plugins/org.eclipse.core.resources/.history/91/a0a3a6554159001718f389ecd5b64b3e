@@ -42,14 +42,13 @@ public class Alocador {
 		return;
 	}
 	
-	public void verificaMesmoProfessor(String professor)
+	public void verificaMesmoProfessor()
 	{
 		
 	}
 	
 	public boolean combinaTurmaSala()
 	{
-		
 		
 		return;
 	}

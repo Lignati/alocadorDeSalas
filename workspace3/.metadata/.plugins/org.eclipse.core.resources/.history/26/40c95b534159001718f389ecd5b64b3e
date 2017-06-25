@@ -12,23 +12,24 @@ public class Turma {
 	public Turma(String professor, int nroAlunos,String id)
 	{
 		this.professor = professor;
-		this.horarios = new ArrayList<Horario>();
+		horarios = new ArrayList<Horario>();
 		this.nroAlunos = nroAlunos;
 		this.id = id;
 	}
 	public void setHorarios(List<Horario> novaListaHorarios){
 		
 		horarios = novaListaHorarios;
-			
+		
+		
 	}
 	public String getProfessor()
 	{
 		return this.professor;
 	}
-	
 	public List<Horario> getHorarios(){
 		
-		return this.horarios;	
+		return this.horarios;
+		
 		
 	}
 	public int getNroAlunos(){

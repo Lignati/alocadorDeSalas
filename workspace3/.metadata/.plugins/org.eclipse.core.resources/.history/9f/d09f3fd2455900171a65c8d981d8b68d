@@ -27,16 +27,17 @@ public class AbreArquivo {
 	
 	public Map<Integer, Boolean> montaRecursos(String recursos)
 	{
-		int nroRecurso;
-		String aux;
+		int nroRecurso, j=0;
+		String aux = null;
 		Map<Integer, Boolean> mapaRecursos;
 		
 		mapaRecursos = new HashMap<Integer, Boolean>();
 		
-		for(int i=0; i<recursos.length(); i+=3)
+		for(int i=0; i<recursos.length(); i++)
 		{
-			aux = recursos.substring(i, i+1);
+			aux = recursos.substring(j, j);
 			nroRecurso = Integer.parseInt(aux);
+			j += 3;
 			
 			mapaRecursos.put(nroRecurso, true);
 		}

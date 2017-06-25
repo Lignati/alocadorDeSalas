@@ -27,6 +27,9 @@ public class Disciplina {
 			}
 		}
 		return mapaHorarios;
+			
+		
+		
 	}
 	
 	public int getCapacidadeMesmoHorario(Horario horario, String professor){
@@ -48,8 +51,8 @@ public class Disciplina {
 	public List<Integer> getRequisitos(){
 		
 		return requisitos;
+			
 	}
-	
 	public void setTurmas(List<Turma> novaListaTurmas){
 		
 		this.turmas = novaListaTurmas;
