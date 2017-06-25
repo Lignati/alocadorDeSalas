@@ -28,14 +28,13 @@ public class AbreArquivo {
 	public Map<Integer, Boolean> montaRecursos(String recursos)
 	{
 		int nroRecurso;
-		String aux;
 		Map<Integer, Boolean> mapaRecursos;
 		
 		mapaRecursos = new HashMap<Integer, Boolean>();
 		
-		for(int i=0; i<recursos.length(); i+=3)
+		for(int i=0; i<recursos.length(); i++)
 		{
-			aux = recursos.substring(i, i+1);
+			String aux = recursos.substring(i, i+1);
 			nroRecurso = Integer.parseInt(aux);
 			
 			mapaRecursos.put(nroRecurso, true);
@@ -103,16 +102,17 @@ public class AbreArquivo {
 		               Element elementoPredio = (Element) nodoXMLPredio;
 
 		               novoPredio = new Predio(elementoPredio.getAttribute("id"));
-		              List<Sala> novaListaSalas = new ArrayList <Sala>();
-		              Sala novaSala;
-		  	         NodeList salasXMLList = doc.getElementsByTagName("room");
-			         for (int j = 0; j < salasXMLList.getLength(); j++) {
-			            Node nodoXMLSala = salasXMLList.item(j);
-			            if (nodoXMLSala.getNodeType() == Node.ELEMENT_NODE) {
-			               Element elementoSala = (Element) nodoXMLSala;
-			               novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),Boolean.parseBoolean(elementoSala.getAttribute("available_for_allocation")),elementoSala.getAttribute("id"),elementoSala.getAttribute("note"));
+		              List<Turma> novaListaTurmas = new ArrayList <Turma>();
+		              Turma novaTurma;
+		  	         NodeList turmasXMLList = doc.getElementsByTagName("group");
+			         for (int j = 0; j < turmasXMLList.getLength(); j++) {
+			            Node nodoXMLTurma = turmasXMLList.item(j);
+			            if (nodoXMLTurma.getNodeType() == Node.ELEMENT_NODE) {
+			               Element elementoTurma = (Element) nodoXMLTurma;
+			              
+			               novaTurma = new Turma(elementoTurma.getAttribute("tecaher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
 			               
-			               novaListaSalas.add(novaSala);
+			               novaListaTurmas.add(novaTurma);
 			            }
 			            
 			        
