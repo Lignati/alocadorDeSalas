@@ -12,7 +12,6 @@ public class Predio {
 	{
 		this.salas = new ArrayList<Sala>();
 		this.id = id;
-		
 	}
 	
 	
@@ -21,9 +20,14 @@ public class Predio {
 		
 	}
 	
+	public List<Sala> getSalas()
+	{
+		return salas;
+	}
 	
 	
-	public Map<Sala, Integer> getSalasRequisitos(List<Sala> salas, Map<Sala, Integer> salasSatisfatorias)
+	
+	public Map<Sala, Integer> getSalasRequisitos(Map<Sala, Integer> salasSatisfatorias)
 	{
 		
 		for (int i=0; i<this.salas.size(); i++)

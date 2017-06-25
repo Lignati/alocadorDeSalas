@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.130+/Users/bernardolignati/Documents/GitHub/alocadorDeSalas/workspace3/.metadata/.plugins/org.eclipse.jdt.core
 1833648217.index
 2545238116.index
@@ -26,3 +27,25 @@ INDEX VERSION 1.130+/Users/bernardolignati/Documents/GitHub/alocadorDeSalas/work
 3334288320.index
 3720681883.index
 1819685514.index
+=======
+INDEX VERSION 1.130+C:\Users\geron\OneDrive\Documentos\alocadorDeSalas1\workspace3\.metadata\.plugins\org.eclipse.jdt.core
+30881555.index
+1841280308.index
+2911469802.index
+2561179376.index
+3314433690.index
+2997567257.index
+91472061.index
+3643810303.index
+1199826107.index
+2221491804.index
+3374570490.index
+1539866187.index
+843494433.index
+449440424.index
+3726721386.index
+1525087677.index
+1475717011.index
+194205294.index
+543038442.index
+>>>>>>> e52796b6809136f41af68cef71f7102eae958165
