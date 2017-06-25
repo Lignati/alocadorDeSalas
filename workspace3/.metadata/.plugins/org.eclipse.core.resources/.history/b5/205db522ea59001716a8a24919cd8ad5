@@ -110,23 +110,21 @@ public class AbreArquivo {
 			            Node nodoXMLSala = salasXMLList.item(j);
 			            if (nodoXMLSala.getNodeType() == Node.ELEMENT_NODE) {
 			               Element elementoSala = (Element) nodoXMLSala;
-			               novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),
-			            		   Boolean.parseBoolean(elementoSala.getAttribute("available_for_allocation")),
-			            		   elementoSala.getAttribute("id"),elementoSala.getAttribute("note"),this.montaRecursos(elementoSala.getAttribute("feature_idsfeature_ids")));
+			               novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),Boolean.parseBoolean(elementoSala.getAttribute("available_for_allocation")),elementoSala.getAttribute("id"),elementoSala.getAttribute("note"));
 			               
 			               novaListaSalas.add(novaSala);
 			            }
 			            
 			        
 			         }
-			         novaListaPredios.add(novoPredio);
+			         novaListaDisciplinas.add(novaDisciplina);
 		               
 		            }
 		         }
 		      } catch (Exception e) {
 		         e.printStackTrace();
 		      }
-		return novaListaPredios;
+		return novaListaDisciplinas;
 		
 		
 		
