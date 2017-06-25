@@ -45,7 +45,6 @@ public class Alocador {
 	public void verificaMesmoProfessor(String professor)
 	{
 		
-		
 	}
 	
 	public boolean combinaTurmaSala(Sala sala, String professor, Horario horario, Disciplina disciplina)
@@ -54,6 +53,11 @@ public class Alocador {
 			return true;
 		else
 			return false;
+		
 	}
 	
+	
+	
+	
+
 }
