@@ -91,7 +91,7 @@ public class AbreArquivo {
 					               Element elementoHorario = (Element) nodoXMLHorario;
 					               ///continuar aqui
 					               
-					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), Integer.parseInt(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")));
+					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), Integer.valeuOf(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")));
 					               
 					               novaListaHorarios.add(novoHorario);
 					            }
