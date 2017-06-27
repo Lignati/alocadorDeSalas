@@ -43,5 +43,10 @@ public class Predio {
 	
 		return salasSatisfatorias;
 	}
+	public void setPredios(List<Sala> novaListaSalas){
+		
+		this.salas = novaListaSalas;
+		
+	}
 
 }

@@ -43,6 +43,16 @@ public class AbreArquivo {
 		
 		return mapaRecursos;
 	}
+	public Hora montaHora(String entrada){
+		int minutos;
+		int horas;
+		horas = Integer.valueOf(entrada.substring(0,2));
+		minutos = Integer.valueOf(entrada.substring(3));
+		Hora novaHora = new Hora(horas,minutos);
+		
+		return novaHora;
+		
+	}
 	
 	public List<Disciplina> montaListaDisciplinas(String nomeArquivo){
 		  Disciplina novaDisciplina;
@@ -71,12 +81,30 @@ public class AbreArquivo {
 			               Element elementoTurma = (Element) nodoXMLTurma;
 			              
 			               novaTurma = new Turma(elementoTurma.getAttribute("tecaher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
-			               
+			               //
+				              List<Horario> novaListaHorarios = new ArrayList <Horario>();
+				              Horario novoHorario;
+				  	         NodeList horariosXMLList = doc.getElementsByTagName("group");
+					         for (int k = 0; k < horariosXMLList.getLength(); k++) {
+					            Node nodoXMLHorario = horariosXMLList.item(j);
+					            if (nodoXMLHorario.getNodeType() == Node.ELEMENT_NODE) {
+					               Element elementoHorario = (Element) nodoXMLHorario;
+					               ///continuar aqui
+					               
+					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"),Integer.parseInt(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")));
+					               
+					               novaListaHorarios.add(novoHorario);
+					            }
+					            
+					        
+					         }
+					         //
 			               novaListaTurmas.add(novaTurma);
 			            }
 			            
 			        
 			         }
+			         novaDisciplina.setTurmas(novaListaTurmas);
 			         novaListaDisciplinas.add(novaDisciplina);
 		               
 		            }
@@ -119,6 +147,7 @@ public class AbreArquivo {
 			            
 			        
 			         }
+			         novoPredio.setPredios(novaListaSalas);
 			         novaListaPredios.add(novoPredio);
 		               
 		            }
