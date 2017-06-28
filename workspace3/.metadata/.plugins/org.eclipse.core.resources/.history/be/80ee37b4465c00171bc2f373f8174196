@@ -62,40 +62,13 @@ public class Alocador {
 	public void montaFichas(){
 		List<Disciplina> disciplinaAloc;
 		List<Turma> turmaAloc;
-		List<Horario> horarioAloc;
 		disciplinaAloc = disciplinas;
-		Ficha novaFicha;
 		
 		
-		for(int i =0; i< disciplinaAloc.size(); i++){
-			
-			turmaAloc = disciplinaAloc.get(i).getTurmas();
-			for(int j = 0; j < turmaAloc.size();j++){
-				horarioAloc = turmaAloc.get(j).getHorarios();
-				for(int k = 0; k < horarioAloc.size() ; k++ ){
-					
-					novaFicha = new Ficha(turmaAloc.get(j).getProfessor(), 
-										  turmaAloc.get(j).getNroAlunos(),
-										  turmaAloc.get(j).getID(),
-										  horarioAloc.get(j).getRequisitos(),
-										  horarioAloc.get(k),disciplinaAloc.get(i).getID());
-					
-					
-					for(int f = 0; f < turmaAloc.size(); f++){
-						for(int g = 0; g < horarioAloc.size();g ++){
-							
-							if(
-							(turmaAloc.get(f).getProfessor().equals(turmaAloc.get(j).getProfessor()))) &&      
-							(horarioAloc.get(g).getStringHorario().equals(horarioAloc.get(k).getStringHorario())) 
-							)
-							
-							
-						}
-					}
-					horarioAloc.remove(k);
-				}
-				
-			}
+		
+		for(int i =0; i< disciplinas.size(); i++){
+			turmaAloc = disciplinaAloc.getTurmas();
+			for(int j; j< disciplinas.turmas.size())
 			
 			
 			

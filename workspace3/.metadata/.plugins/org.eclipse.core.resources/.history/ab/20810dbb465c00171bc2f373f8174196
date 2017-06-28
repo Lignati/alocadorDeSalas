@@ -89,7 +89,7 @@ public class AbreArquivo {
 					            Node nodoXMLHorario = horariosXMLList.item(j);
 					            if (nodoXMLHorario.getNodeType() == Node.ELEMENT_NODE) {
 					               Element elementoHorario = (Element) nodoXMLHorario;					               
-					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), Integer.parseInt(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute("feeature_ids")));
+					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), Integer.parseInt(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")));
 					               
 					               novaListaHorarios.add(novoHorario);
 					            }

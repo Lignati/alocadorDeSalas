@@ -60,10 +60,6 @@ public class Disciplina {
 		return this.turmas;
 		
 	}
-	public String getID(){
-		
-		return this.id;
-	}
 	
 
 }

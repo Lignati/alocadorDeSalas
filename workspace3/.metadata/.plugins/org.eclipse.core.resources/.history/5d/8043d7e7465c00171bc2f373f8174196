@@ -22,7 +22,7 @@ public class Sala {
 		this.disponivel = disponivel;
 		this.tipo = tipo;
 		this.id = id;
-		this.agenda = new HashMap <Ficha,Turma>();
+		this.agenda = new HashMap<Horario, Turma>();
 		this.recurso = new HashMap<Integer, Boolean>();
 		
 	}

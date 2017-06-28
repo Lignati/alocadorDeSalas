@@ -1,14 +1,13 @@
 package dominio;
-import java.util.*;
+
 public class Horario {
 	
 	int duracao;
 	
 	Hora horaInicio;
 	String diaSemana;
-	Map <Integer, Boolean> requisitos;
 	
-	public Horario(String diaDaSemana, int duracao, Hora horaInicio, Map<Integer,Boolean> requisitos){
+	public Horario(String diaDaSemana, int duracao, Hora horaInicio){
 		
 		this.horaInicio = horaInicio;
 		
@@ -38,13 +37,6 @@ public class Horario {
 		
 		return this.horaInicio.toString() + Integer.toString(this.duracao) + this.diaSemana;
 		
-		
-	}
-	public Map<Integer, Boolean> getRequisitos(){
-		
-		
-		
-		return this.requisitos;
 		
 	}
 }
