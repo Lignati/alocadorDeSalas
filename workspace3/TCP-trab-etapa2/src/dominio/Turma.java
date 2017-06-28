@@ -36,6 +36,10 @@ public class Turma {
 		return this.nroAlunos;
 		
 	}
-	
+	public String getID(){
+
+		return this.id;
+		
+	}
 
 }

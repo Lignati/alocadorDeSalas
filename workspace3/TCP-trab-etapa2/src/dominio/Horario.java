@@ -1,19 +1,20 @@
 package dominio;
-
+import java.util.*;
 public class Horario {
 	
-	Hora horaFim;
+	int duracao;
 	
 	Hora horaInicio;
 	String diaSemana;
+	Map <Integer, Boolean> requisitos;
 	
-	public Horario(Hora horaInicio, Hora horaFim, String diaSemana){
+	public Horario(String diaDaSemana, int duracao, Hora horaInicio, Map<Integer,Boolean> requisitos){
 		
 		this.horaInicio = horaInicio;
 		
-		this.horaFim    = horaFim;
+		this.duracao = duracao;
 		
-		this.diaSemana  = diaSemana;
+		this.diaSemana  = diaDaSemana;
 		
 	}
 	
@@ -22,14 +23,10 @@ public class Horario {
 		return this.horaInicio;
 	}
 	
-	public Hora getHoraFim(){
-		
-		return this.horaFim;
-	}
 	
 	public int getDuracaoMinutos(){
 		
-		return (this.horaFim.getHoras() - this.horaInicio.getHoras())*60 + (this.horaFim.getMinutos() - this.horaInicio.getMinutos());
+		return this.duracao;
 		
 	}
 	public String getDiaSemana (){
@@ -39,8 +36,15 @@ public class Horario {
 	}
 	public String getStringHorario(){
 		
-		return this.horaInicio.toString() + this.horaFim.toString() + this.diaSemana;
+		return this.horaInicio.toString() + Integer.toString(this.duracao) + this.diaSemana;
 		
+		
+	}
+	public Map<Integer, Boolean> getRequisitos(){
+		
+		
+		
+		return this.requisitos;
 		
 	}
 }

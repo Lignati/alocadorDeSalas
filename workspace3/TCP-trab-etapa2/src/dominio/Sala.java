@@ -11,7 +11,7 @@ public class Sala {
 	
 	String tipo;
 	String id;
-	Map<Horario, Turma> agenda;
+	Map<Ficha, Turma> agenda;
 	Map<Integer, Boolean> recurso;
 	String note;
 	
@@ -22,7 +22,7 @@ public class Sala {
 		this.disponivel = disponivel;
 		this.tipo = tipo;
 		this.id = id;
-		this.agenda = new HashMap<Horario, Turma>();
+		this.agenda = new HashMap <Ficha,Turma>();
 		this.recurso = new HashMap<Integer, Boolean>();
 		
 	}

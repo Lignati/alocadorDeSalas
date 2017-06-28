@@ -55,6 +55,15 @@ public class Disciplina {
 		this.turmas = novaListaTurmas;
 		
 	}
+	public List<Turma> getTurmas(){
+		
+		return this.turmas;
+		
+	}
+	public String getID(){
+		
+		return this.id;
+	}
 	
 
 }

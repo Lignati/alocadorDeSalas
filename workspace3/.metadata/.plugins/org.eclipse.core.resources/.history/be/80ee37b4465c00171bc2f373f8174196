@@ -1,0 +1,81 @@
+package dominio;
+import java.util.*;
+import dominio.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Alocador {
+	
+	List<Predio> predios;
+	List<Disciplina> disciplinas;
+	Map<Integer, String> recursos;
+	List<Ficha> fichas;
+	
+	
+	public Alocador(List<Predio> predios, List<Disciplina> disciplinas, Map<Integer, String> recursos)
+	{
+		this.predios = predios;
+		this.disciplinas = disciplinas;
+		this.recursos = recursos;
+		this.fichas = new ArrayList <Ficha>();
+	}
+	
+	public void ordenaPrioridadesSala()
+	{
+		
+		//M�TODO BOLHA UHUL
+		for(int k =0; k < predios.size(); k++){
+			for( int i=this.predios.get(k).getSalas().size(); i>=1; i--){
+				for(int j=1; j<i; j++){
+					if(this.predios.get(k).getSalas().get(j-1).getNumeroRecursos() > this.predios.get(k).getSalas().get(j).getNumeroRecursos()){
+						Collections.swap(this.predios.get(k).getSalas(), j, j-1);
+					}
+				}
+		      }
+        }
+	
+	}
+	
+	
+	public boolean alocaSala()
+	{
+		
+		return;
+	}
+	
+	public void verificaMesmoProfessor(String professor)
+	{
+		
+		
+	}
+	
+	public boolean combinaTurmaSala(Sala sala, String professor, Horario horario, Disciplina disciplina)
+	{	
+		if(disciplina.getCapacidadeMesmoHorario(horario, professor) < sala.capacidade)
+			return true;
+		else
+			return false;
+	}
+	public void montaFichas(){
+		List<Disciplina> disciplinaAloc;
+		List<Turma> turmaAloc;
+		disciplinaAloc = disciplinas;
+		
+		
+		
+		for(int i =0; i< disciplinas.size(); i++){
+			turmaAloc = disciplinaAloc.getTurmas();
+			for(int j; j< disciplinas.turmas.size())
+			
+			
+			
+			
+		}
+		
+		
+		
+	}
+}
