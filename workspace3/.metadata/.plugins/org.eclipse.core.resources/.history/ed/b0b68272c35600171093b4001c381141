@@ -1,9 +1,0 @@
-package arquitetura;
-
-public class Disciplina {
-	
-	String id;
-	String nome;
-	
-
-}
