@@ -79,24 +79,17 @@ public class Alocador {
 										  turmaAloc.get(j).getID(),
 										  horarioAloc.get(j).getRequisitos(),
 										  horarioAloc.get(k),disciplinaAloc.get(i).getID());
-					//:'(
+					
 					
 					for(int f = 0; f < turmaAloc.size(); f++){
 						for(int g = 0; g < horarioAloc.size();g ++){
+							
 							if(
-							(turmaAloc.get(f).getProfessor().equals(turmaAloc.get(j).getProfessor())) &&      
-							(horarioAloc.get(g).getStringHorario().equals(horarioAloc.get(k).getStringHorario())) &&
-							!(turmaAloc.get(f).getID().equals(turmaAloc.get(j).getID()))){
-								
-								novaFicha.addTurma(turmaAloc.get(f).getID(), turmaAloc.get(f).getNroAlunos());
-								
-							}
-							if (turmaAloc.get(f).getHorarios().isEmpty() == true){
-								turmaAloc.remove(f);
-							}
-							else{
-								turmaAloc.get(f).getHorarios().remove(g);
-							}
+							(turmaAloc.get(f).getProfessor().equals(turmaAloc.get(j).getProfessor()))) &&      
+							(horarioAloc.get(g).getStringHorario().equals(horarioAloc.get(k).getStringHorario())) 
+							)
+							
+							
 						}
 					}
 					horarioAloc.remove(k);
