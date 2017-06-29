@@ -131,7 +131,7 @@ public class Alocador {
 			for( l = 0; l < pioresSalas.size(); l++){
 				
 				if(this.fichas.get(i).getRequisitos() == pioresSalas.get(l).getRecurso()){
-					pioresSalas.get(l).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
+					pioresSalas.get(l).getAgenda.put(this.fichas.get(i).horario, this.fichas.get(i));
 					break;
 				}
 			}	
