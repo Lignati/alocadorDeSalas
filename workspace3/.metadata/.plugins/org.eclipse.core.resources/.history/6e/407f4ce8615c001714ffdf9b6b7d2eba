@@ -32,9 +32,4 @@ public class Ficha {
 		
 		return this.requisitos;
 	}
-	
-	public Horario getHorario(){
-		
-		return this.horario;
-	}
 }

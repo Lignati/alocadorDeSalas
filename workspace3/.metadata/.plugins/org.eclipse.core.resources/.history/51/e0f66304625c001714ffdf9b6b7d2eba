@@ -1,9 +1,11 @@
 package dominio;
 import java.util.*;
+import dominio.*;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Alocador {
 	
