@@ -55,7 +55,13 @@ public class Predio {
 			
 			System.out.println(getSalas().get(i).getIDSala());
 			
-
+			for(int j = 0; j < getSalas().size(); j++){
+				
+				getSalas().get(i).getHorarios().get(j);
+				
+				System.out.println(getSalas().get(i).getHorario.get(j).getHorarioString);
+				
+			}
 			
 		}
 		

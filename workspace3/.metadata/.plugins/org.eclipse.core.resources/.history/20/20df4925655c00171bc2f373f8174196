@@ -1,0 +1,17 @@
+import java.util.List;
+import java.util.Map;
+
+import dominio.Disciplina;
+import dominio.Predio;
+import interfaceXML.*;
+public class TCP {
+	public static void main(String [ ] args)
+	{
+		AbreArquivo arquivo = new AbreArquivo("tcp.xml");
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
+		Alocador(arquivo.getPredios(), arquivo.getDisciplinas);
+		
+	}
+
+}

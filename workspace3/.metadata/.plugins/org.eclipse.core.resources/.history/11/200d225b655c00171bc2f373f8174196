@@ -9,13 +9,15 @@ public class Alocador {
 	
 	List<Predio> predios;
 	List<Disciplina> disciplinas;
+	Map<Integer, String> recursos;
 	List<Ficha> fichas;
 	
 	
-	public Alocador(List<Predio> predios, List<Disciplina> disciplinas)
+	public Alocador(List<Predio> predios, List<Disciplina> disciplinas, Map<Integer, String> recursos)
 	{
 		this.predios = predios;
 		this.disciplinas = disciplinas;
+		this.recursos = recursos;
 		this.fichas = new ArrayList <Ficha>();
 	}
 	

@@ -160,16 +160,4 @@ public class AbreArquivo {
 		
 		
 	}
-	public List<Predio> getPredios(){
-		
-		
-		return predios;
-		
-	}
-	public List<Disciplina> getDisciplinas(){
-		
-		
-		return disciplinas;
-		
-	}
 }
