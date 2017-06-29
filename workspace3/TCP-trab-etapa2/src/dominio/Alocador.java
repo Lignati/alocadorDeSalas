@@ -1,11 +1,9 @@
 package dominio;
 import java.util.*;
-import dominio.*;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Alocador {
 	
@@ -40,11 +38,14 @@ public class Alocador {
 	}
 	
 	
+<<<<<<< HEAD
 	/*public boolean alocaSala()
 	{
 		
 		return;
 	}*/
+=======
+>>>>>>> 506cbb6c26b5b09b55d67fcb559841f82fb4ce43
 	
 	public void verificaMesmoProfessor(String professor)
 	{
@@ -59,6 +60,7 @@ public class Alocador {
 		else
 			return false;
 	}
+	
 	public void montaFichas(){
 		List<Disciplina> disciplinaAloc;
 		List<Turma> turmaAloc;
@@ -100,16 +102,62 @@ public class Alocador {
 						}
 					}
 					horarioAloc.remove(k);
+				}	
+			}	
+		}
+	}
+	
+	public void AlocaSala(){
+		
+		List<Sala> salasDoPredio;
+		List<Sala> pioresSalas, pioresSalasRef;
+		int index=0;
+		
+		pioresSalas = new ArrayList<Sala>();
+		
+		for(int i = 0; i < this.fichas.size(); i++){
+			
+			for(int j = 0; j < this.predios.size(); j++){
+				salasDoPredio = this.predios.get(j).getSalas();
+				
+				while(salasDoPredio.get(index).agenda.containsKey(this.fichas.get(i).getHorario()) == true){
+					
+					index++;
 				}
 				
+				pioresSalas.add(j, salasDoPredio.get(index));	
 			}
+			pioresSalasRef = pioresSalas;
+			Sala Primeira = pioresSalas.get(0);
 			
-			
-			
+			for(int k = 1; k < pioresSalas.size(); k++){
+				
+				if(pioresSalas.get(k).getNumeroRecursos() < Primeira.getNumeroRecursos())
+					Collections.swap(pioresSalas, 0, k);
+			}
+			int l;
+			for( l = 0; l < pioresSalas.size(); l++){
+				
+				if(this.fichas.get(i).getRequisitos() == pioresSalas.get(l).getRecurso()){
+					pioresSalas.get(l).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
+					break;
+				}
+			}	
+			int g = 0;
+			while(pioresSalas.get(l).getIDSala() != pioresSalasRef.get(g).getIDSala()){
+				
+				g++;
+				
+			}
+			int f =0 ;
+			while(predios.get(g).getSalas().get(f).getIDSala() != pioresSalas.get(l).getIDSala()){
+				
+				f++;
+				
+			}
+			predios.get(g).getSalas().add(f, pioresSalas.get(l));
 			
 		}
-		
-		
-		
-	}
+		 
+	}	
 }

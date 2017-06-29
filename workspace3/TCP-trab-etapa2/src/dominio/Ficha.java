@@ -28,5 +28,13 @@ public class Ficha {
 		
 	}
 	
-
+	public Map<Integer, Boolean> getRequisitos(){
+		
+		return this.requisitos;
+	}
+	
+	public Horario getHorario(){
+		
+		return this.horario;
+	}
 }

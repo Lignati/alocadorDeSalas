@@ -11,7 +11,7 @@ public class Sala {
 	
 	String tipo;
 	String id;
-	Map<Ficha, Turma> agenda;
+	Map<Horario, Ficha> agenda;
 	Map<Integer, Boolean> recurso;
 	String note;
 	
@@ -22,7 +22,7 @@ public class Sala {
 		this.disponivel = disponivel;
 		this.tipo = tipo;
 		this.id = id;
-		this.agenda = new HashMap <Ficha,Turma>();
+		this.agenda = new HashMap <Horario,  Ficha>();
 		this.recurso = new HashMap<Integer, Boolean>();
 		
 	}
@@ -54,6 +54,11 @@ public class Sala {
 	public String getIDSala()
 	{
 		return this.id;
+	}
+	
+	public Map<Integer, Boolean> getRecurso()
+	{
+		return this.recurso;
 	}
 	
 	
