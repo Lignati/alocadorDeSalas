@@ -38,6 +38,14 @@ public class Alocador {
 	}
 	
 	
+<<<<<<< HEAD
+	/*public boolean alocaSala()
+	{
+		
+		return;
+	}*/
+=======
+>>>>>>> 506cbb6c26b5b09b55d67fcb559841f82fb4ce43
 	
 	public void verificaMesmoProfessor(String professor)
 	{

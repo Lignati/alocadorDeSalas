@@ -54,11 +54,11 @@ public class AbreArquivo {
 		
 	}
 	
-	public List<Disciplina> montaListaDisciplinas(String nomeArquivo){
+	public List<Disciplina> montaListaDisciplinas(){
 		  Disciplina novaDisciplina;
 		  List<Disciplina> novaListaDisciplinas = new ArrayList <Disciplina>();
 	      try {	
-		         File inputFile = new File("nomeArquivo.xml");
+		         File inputFile = new File(nome);
 		         DocumentBuilderFactory dbFactory 
 		            = DocumentBuilderFactory.newInstance();
 		         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -84,12 +84,14 @@ public class AbreArquivo {
 			               //
 				              List<Horario> novaListaHorarios = new ArrayList <Horario>();
 				              Horario novoHorario;
-				  	         NodeList horariosXMLList = doc.getElementsByTagName("group");
+				  	         NodeList horariosXMLList = doc.getElementsByTagName("session");
 					         for (int k = 0; k < horariosXMLList.getLength(); k++) {
 					            Node nodoXMLHorario = horariosXMLList.item(j);
 					            if (nodoXMLHorario.getNodeType() == Node.ELEMENT_NODE) {
-					               Element elementoHorario = (Element) nodoXMLHorario;					               
-					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), Integer.parseInt(elementoHorario.getAttribute("duration")),this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute("feeature_ids")));
+					               Element elementoHorario = (Element) nodoXMLHorario;		
+					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), 
+					            		   Integer.valueOf(elementoHorario.getAttribute("duration")),
+					            		   this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute	("feeature_id")));
 					               
 					               novaListaHorarios.add(novoHorario);
 					            }
@@ -116,7 +118,7 @@ public class AbreArquivo {
 		  Predio novoPredio;
 		  List<Predio> novaListaPredios = new ArrayList <Predio>();
 	      try {	
-		         File inputFile = new File("nomeArquivo.xml");
+		         File inputFile = new File(nome);
 		         DocumentBuilderFactory dbFactory 
 		            = DocumentBuilderFactory.newInstance();
 		         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
