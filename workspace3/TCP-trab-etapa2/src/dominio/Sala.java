@@ -61,6 +61,11 @@ public class Sala {
 		return this.recurso;
 	}
 	
+	public Map<Horario, Ficha> getAgenda()
+	{
+		return agenda;
+	}
+	
 	
 
 }
