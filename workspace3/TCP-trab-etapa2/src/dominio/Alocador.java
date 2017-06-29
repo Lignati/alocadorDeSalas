@@ -40,11 +40,11 @@ public class Alocador {
 	}
 	
 	
-	public boolean alocaSala()
+	/*public boolean alocaSala()
 	{
 		
 		return;
-	}
+	}*/
 	
 	public void verificaMesmoProfessor(String professor)
 	{
