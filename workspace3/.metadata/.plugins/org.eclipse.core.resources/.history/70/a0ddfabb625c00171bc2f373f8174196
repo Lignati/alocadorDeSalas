@@ -9,20 +9,22 @@ public class Alocador {
 	
 	List<Predio> predios;
 	List<Disciplina> disciplinas;
+	Map<Integer, String> recursos;
 	List<Ficha> fichas;
 	
 	
-	public Alocador(List<Predio> predios, List<Disciplina> disciplinas)
+	public Alocador(List<Predio> predios, List<Disciplina> disciplinas, Map<Integer, String> recursos)
 	{
 		this.predios = predios;
 		this.disciplinas = disciplinas;
+		this.recursos = recursos;
 		this.fichas = new ArrayList <Ficha>();
 	}
 	
 	public void ordenaPrioridadesSala()
 	{
 		
-		
+		//M�TODO BOLHA UHUL
 		for(int k =0; k < predios.size(); k++){
 			for( int i=this.predios.get(k).getSalas().size(); i>=1; i--){
 				for(int j=1; j<i; j++){
@@ -35,7 +37,6 @@ public class Alocador {
 	
 	}
 	
-
 	
 	public void verificaMesmoProfessor(String professor)
 	{
@@ -110,7 +111,7 @@ public class Alocador {
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
 				
-				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
+				while(salasDoPredio.get(index).agenda.containsKey(this.fichas.get(i).getHorario()) == true){
 					
 					index++;
 				}
@@ -129,7 +130,7 @@ public class Alocador {
 			for( l = 0; l < pioresSalas.size(); l++){
 				
 				if(this.fichas.get(i).getRequisitos() == pioresSalas.get(l).getRecurso()){
-					pioresSalas.get(l).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
+					pioresSalas.get(l).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
 					break;
 				}
 			}	
@@ -149,12 +150,5 @@ public class Alocador {
 			
 		}
 		 
-	}
-	public List <Predio> getPredios(){
-		
-		 
-		
-			return predios;
-		
-	}
+	}	
 }

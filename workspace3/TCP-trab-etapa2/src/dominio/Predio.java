@@ -48,5 +48,17 @@ public class Predio {
 		this.salas = novaListaSalas;
 		
 	}
+	public void imprimePredio(){
+		
+		System.out.println(id);
+		for(int i = 0; i < getSalas().size(); i++){
+			
+			System.out.println(getSalas().get(i).getIDSala());
+			
+
+			
+		}
+		
+	}
 
 }
