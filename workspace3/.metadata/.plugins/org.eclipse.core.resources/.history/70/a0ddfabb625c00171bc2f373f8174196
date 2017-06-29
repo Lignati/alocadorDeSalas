@@ -37,7 +37,6 @@ public class Alocador {
 	
 	}
 	
-
 	
 	public void verificaMesmoProfessor(String professor)
 	{
@@ -151,12 +150,5 @@ public class Alocador {
 			
 		}
 		 
-	}
-	public List <Predio> getPredios(){
-		
-		 
-		
-			return predios;
-		
-	}
+	}	
 }
