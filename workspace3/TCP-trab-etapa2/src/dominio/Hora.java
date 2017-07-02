@@ -22,4 +22,10 @@ public class Hora {
 		return this.minutos;
 		
 	}
+	public String toString(){
+		
+		
+		
+		return Integer.toString(horas) + ":" + Integer.toString(minutos); 
+	}
 }

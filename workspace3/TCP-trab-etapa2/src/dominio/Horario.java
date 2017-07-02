@@ -56,4 +56,9 @@ public class Horario {
 		return this.requisitos;
 		
 	}
+	public String toString(){
+		
+		return "Dia da Semana:" + this.diaSemana +"Hora Inicio:" + this.horaInicio.toString() + "Duracao:" + Integer.toString(this.duracao); 
+			
+	}
 }

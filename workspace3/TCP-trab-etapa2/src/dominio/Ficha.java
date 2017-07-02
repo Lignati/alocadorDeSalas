@@ -42,4 +42,16 @@ public class Ficha {
 		return turmas;
 		
 	}
+	public String toString(){
+		String listaTurmas = "";;
+		for (String s : this.turmas)
+		{
+		    listaTurmas += s + " ";
+		}
+
+		
+		return "Disciplina:" + this.disciplina +"Turmas:" + listaTurmas + "Horario:" + this.horario.toString() + "Professor:" + this.professor; 
+		
+		
+	}
 }
