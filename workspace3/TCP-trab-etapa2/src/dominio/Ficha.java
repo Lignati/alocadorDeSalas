@@ -37,4 +37,21 @@ public class Ficha {
 		
 		return this.horario;
 	}
+	public List<String> getListaTurmas(){
+		
+		return turmas;
+		
+	}
+	public String toString(){
+		String listaTurmas = "";;
+		for (String s : this.turmas)
+		{
+		    listaTurmas += s + " ";
+		}
+
+		
+		return "Disciplina:" + this.disciplina +"Turmas:" + listaTurmas + "Horario:" + this.horario.toString() + "Professor:" + this.professor; 
+		
+		
+	}
 }

@@ -65,6 +65,30 @@ public class Sala {
 	{
 		return agenda;
 	}
+<<<<<<< HEAD
+=======
+	public void imprimeAgenda(){
+		System.out.println("x");
+		Set<Horario> chaves = this.agenda.keySet();
+		System.out.println(agenda.size());
+		for (Iterator<Horario> iterator = chaves.iterator(); iterator.hasNext();)
+		{
+			Horario chave = iterator.next();
+			if(chave != null)
+				System.out.println(agenda.get(chave).toString());
+			else
+				System.out.println("k");
+		}
+		for (Horario key: agenda.keySet()){
+			System.out.println("a");
+			System.out.println(agenda.get(key).toString());
+
+
+		} 
+		
+	}
+	
+>>>>>>> 940f2e181036ca95864607319b1f82654b2353aa
 
 }
 

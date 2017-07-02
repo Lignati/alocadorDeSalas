@@ -16,8 +16,17 @@ public class Horario {
 		
 		this.diaSemana  = diaDaSemana;
 		
+		this.requisitos = requisitos;
 	}
-	
+	public Horario(String diaDaSemana, int duracao, Hora horaInicio){
+		
+		this.horaInicio = horaInicio;
+		
+		this.duracao = duracao;
+		
+		this.diaSemana  = diaDaSemana;
+		
+	}
 	public Hora getHoraInicio(){
 		
 		return this.horaInicio;
@@ -46,5 +55,10 @@ public class Horario {
 		
 		return this.requisitos;
 		
+	}
+	public String toString(){
+		
+		return "Dia da Semana:" + this.diaSemana +"Hora Inicio:" + this.horaInicio.toString() + "Duracao:" + Integer.toString(this.duracao); 
+			
 	}
 }
