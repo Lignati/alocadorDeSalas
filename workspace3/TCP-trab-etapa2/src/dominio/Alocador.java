@@ -3,7 +3,6 @@ import java.util.*;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class Alocador {
 	
@@ -56,7 +55,7 @@ public class Alocador {
 		List<Turma> turmaAloc;
 		List<Horario> horarioAloc;
 		disciplinaAloc = disciplinas;
-		Ficha novaFicha;
+		Ficha novaFicha = null;
 		
 		
 		for(int i =0; i< disciplinaAloc.size(); i++){
@@ -93,6 +92,8 @@ public class Alocador {
 					}
 					horarioAloc.remove(k);
 				}	
+				this.fichas.add(novaFicha);
+
 			}	
 		}
 	}
@@ -101,12 +102,10 @@ public class Alocador {
 		
 		List<Sala> salasDoPredio;
 		List<Sala> pioresSalas, pioresSalasRef;
-		int index=0;
-		
+		int index = 0;
 		pioresSalas = new ArrayList<Sala>();
 		
 		for(int i = 0; i < this.fichas.size(); i++){
-			
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
 				
@@ -128,27 +127,28 @@ public class Alocador {
 			int l;
 			for( l = 0; l < pioresSalas.size(); l++){
 				
-				if(this.fichas.get(i).getRequisitos() == pioresSalas.get(l).getRecurso()){
+				if(this.fichas.get(i).getRequisitos().equals(pioresSalas.get(l).getRecurso())){
 					pioresSalas.get(l).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
 					break;
 				}
 			}	
 			int g = 0;
-			while(pioresSalas.get(l).getIDSala() != pioresSalasRef.get(g).getIDSala()){
+			while(!pioresSalas.get(l).getIDSala().equals( pioresSalasRef.get(g).getIDSala())){
 				
 				g++;
 				
 			}
 			int f =0 ;
-			while(predios.get(g).getSalas().get(f).getIDSala() != pioresSalas.get(l).getIDSala()){
+			while(!this.predios.get(g).getSalas().get(f).getIDSala().equals( pioresSalas.get(l).getIDSala())){
 				
 				f++;
 				
 			}
-			predios.get(g).getSalas().add(f, pioresSalas.get(l));
+			this.predios.get(g).getSalas().add(f, pioresSalas.get(l));
+			
 			
 		}
-		 
+		this.predios.get(0).getSalas().get(0).imprimeAgenda();
 	}
 	public List <Predio> getPredios(){
 		

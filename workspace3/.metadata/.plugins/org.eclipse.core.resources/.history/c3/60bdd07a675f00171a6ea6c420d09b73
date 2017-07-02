@@ -1,0 +1,25 @@
+import java.util.*;
+import java.util.Map;
+import interfaceXML.*;
+import dominio.*;
+public class TCP {
+	public static void main(String [ ] args)
+	{
+		AbreArquivo arquivo = new AbreArquivo("x.xml");
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
+		Alocador alocador = new Alocador(arquivo.getPredios(), arquivo.getDisciplinas());
+		alocador.montaFichas();
+		alocador.ordenaPrioridadesSala();
+		alocador.AlocaSala();
+		
+		Set<String> chaves = mapa.keySet();
+
+		for (String chave : chaves)
+		{
+			if(chave != null)
+				System.out.println(chave + mapa.get(chave));
+		}
+	}
+
+}

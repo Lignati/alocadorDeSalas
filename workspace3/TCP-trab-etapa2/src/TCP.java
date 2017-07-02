@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import interfaceXML.*;
 import dominio.*;
 public class TCP {
@@ -12,9 +11,16 @@ public class TCP {
 		alocador.montaFichas();
 		alocador.ordenaPrioridadesSala();
 		alocador.AlocaSala();
-		
-		System.out.print((alocador.getPredios().get(0).getSalas().get(0).getAgenda().get(arquivo.getDisciplinas().get(0).getTurmas().get(0).getHorarios().get(0))));
-		
+		List<Predio> predios = alocador.getPredios();
+		for(int i = 0; i < predios.size();i++){
+			for(int j = 0; j < predios.get(i).getSalas().size();j++){
+
+				//predios.get(i).getSalas().get(j).imprimeAgenda();
+				
+			}
+			
+			
+		}
 	}
 
 }
