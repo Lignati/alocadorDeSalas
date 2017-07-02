@@ -16,8 +16,17 @@ public class Horario {
 		
 		this.diaSemana  = diaDaSemana;
 		
+		this.requisitos = requisitos;
 	}
-	
+	public Horario(String diaDaSemana, int duracao, Hora horaInicio){
+		
+		this.horaInicio = horaInicio;
+		
+		this.duracao = duracao;
+		
+		this.diaSemana  = diaDaSemana;
+		
+	}
 	public Hora getHoraInicio(){
 		
 		return this.horaInicio;

@@ -30,7 +30,7 @@ public class Alocador {
 						Collections.swap(this.predios.get(k).getSalas(), j, j-1);
 					}
 				}
-		      }
+		       }
         }
 	
 	}

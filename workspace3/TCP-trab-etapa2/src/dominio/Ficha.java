@@ -37,4 +37,9 @@ public class Ficha {
 		
 		return this.horario;
 	}
+	public List<String> getListaTurmas(){
+		
+		return turmas;
+		
+	}
 }
