@@ -65,8 +65,7 @@ public class Sala {
 	{
 		return agenda;
 	}
-<<<<<<< HEAD
-=======
+
 	public void imprimeAgenda(){
 		System.out.println("x");
 		Set<Horario> chaves = this.agenda.keySet();
@@ -88,7 +87,6 @@ public class Sala {
 		
 	}
 	
->>>>>>> 940f2e181036ca95864607319b1f82654b2353aa
 
 }
 
