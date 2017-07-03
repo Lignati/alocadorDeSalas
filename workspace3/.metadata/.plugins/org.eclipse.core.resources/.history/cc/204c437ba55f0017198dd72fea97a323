@@ -75,10 +75,11 @@ public class Ficha {
 			}
 		}
 		
-		for(int i=0; i<lista2.size(); i++){
-			if(lista2.contains(lista1.get(i)) == false)
-				return false;
+		if(lista1.equals(lista2)){
+			return true;
 		}
-		return true;
+		else
+			return false;
+		
 	}
 }
