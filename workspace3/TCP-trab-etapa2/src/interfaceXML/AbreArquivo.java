@@ -40,6 +40,15 @@ public class AbreArquivo {
 			
 			mapaRecursos.put(nroRecurso, true);
 		}
+		for(int i=0; i< mapaRecursos.size() ;i++){
+			
+			if(!mapaRecursos.containsKey(i)){
+				
+				mapaRecursos.put(i, false);
+			}
+			
+			
+		}
 		
 		return mapaRecursos;
 	}
@@ -71,39 +80,34 @@ public class AbreArquivo {
 		               Element elementoDisciplina = (Element) nodoXMLDisciplina;
 
 		               novaDisciplina = new Disciplina(elementoDisciplina.getAttribute("name"), elementoDisciplina.getAttribute("id"));
-		             
-		              List<Turma> novaListaTurmas = new ArrayList <Turma>();
-		              Turma novaTurma;
-		  	         NodeList turmasXMLList = doc.getElementsByTagName("group");
-			         for (int j = 0; j < turmasXMLList.getLength(); j++) {
-			            Node nodoXMLTurma = turmasXMLList.item(j);
-			            if (nodoXMLTurma.getNodeType() == Node.ELEMENT_NODE) {
-			               Element elementoTurma = (Element) nodoXMLTurma;
-			              
-			               novaTurma = new Turma(elementoTurma.getAttribute("tecaher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
-			               //
-				              List<Horario> novaListaHorarios = new ArrayList <Horario>();
-				              Horario novoHorario;
-				  	         NodeList horariosXMLList = doc.getElementsByTagName("session");
-					         for (int k = 0; k < horariosXMLList.getLength(); k++) {
-					            Node nodoXMLHorario = horariosXMLList.item(j);
-					            if (nodoXMLHorario.getNodeType() == Node.ELEMENT_NODE) {
-					               Element elementoHorario = (Element) nodoXMLHorario;		
-					               novoHorario = new Horario(elementoHorario.getAttribute("weekday"), 
+		               
+		               List<Turma> novaListaTurmas = new ArrayList<Turma>();
+		               Turma novaTurma;
+		               Node noTurma = elementoDisciplina.getFirstChild();     
+		               while( noTurma.getNextSibling()!=null ){          
+		                   noTurma = noTurma.getNextSibling();         
+		                   if (noTurma.getNodeType() == Node.ELEMENT_NODE) {         
+		                       Element elementoTurma = (Element) noTurma;      
+		                       novaTurma = new Turma(elementoTurma.getAttribute("teacher"),Integer.valueOf(elementoTurma.getAttribute("number_of_students")),elementoTurma.getAttribute("id"));
+		                       novaListaTurmas.add(novaTurma);
+		                   
+		                       List<Horario> novaListaHorarios = new ArrayList<Horario>();
+		                       Horario novoHorario;
+		                       Node noHorario = elementoTurma.getFirstChild();
+		                       while(noHorario.getNextSibling() != null){
+		                           noHorario = noHorario.getNextSibling();         
+				                   if (noHorario.getNodeType() == Node.ELEMENT_NODE) {       
+			                       Element elementoHorario = (Element) noHorario;      
+		                    	   novoHorario = new Horario(elementoHorario.getAttribute("weekday"), 
 					            		   Integer.valueOf(elementoHorario.getAttribute("duration")),
-					            		   this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute	("feeature_id")));
-					               
-					               novaListaHorarios.add(novoHorario);
-					            }
-					            
-					        
-					         }
-					         //
-			               novaListaTurmas.add(novaTurma);
-			            }
-			            
-			        
-			         }
+					            		   this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute	("feeature_id"))); 
+		                    	   		   novaListaHorarios.add(novoHorario);
+				                   }
+				                   
+		                       }
+		                       novaTurma.setHorarios(novaListaHorarios);
+		                   }       
+		               }
 			         novaDisciplina.setTurmas(novaListaTurmas);
 			         novaListaDisciplinas.add(novaDisciplina);
 		               
@@ -133,21 +137,23 @@ public class AbreArquivo {
 
 		               novoPredio = new Predio(elementoPredio.getAttribute("id"));
 		              List<Sala> novaListaSalas = new ArrayList <Sala>();
+		              
 		              Sala novaSala;
-		  	         NodeList salasXMLList = doc.getElementsByTagName("room");
-			         for (int j = 0; j < salasXMLList.getLength(); j++) {
-			            Node nodoXMLSala = salasXMLList.item(j);
-			            if (nodoXMLSala.getNodeType() == Node.ELEMENT_NODE) {
-			               Element elementoSala = (Element) nodoXMLSala;
-			               novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),
+                      Node noSala = elementoPredio.getFirstChild();
+                      while(noSala.getNextSibling() != null){
+                          noSala = noSala.getNextSibling();         
+		                   if (noSala.getNodeType() == Node.ELEMENT_NODE) {       
+	                       Element elementoSala = (Element) noSala;      
+	                       novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),
 			            		   Boolean.parseBoolean(elementoSala.getAttribute("available_for_allocation")),
 			            		   elementoSala.getAttribute("note"), elementoSala.getAttribute("id"),this.montaRecursos(elementoSala.getAttribute("feature_idsfeature_ids")));
-			               
-			               novaListaSalas.add(novaSala);
-			            }
+                   	   		   novaListaSalas.add(novaSala);
+		                   }
+		                   
+                      }
 			            
 			        
-			         }
+			         
 			         novoPredio.setPredios(novaListaSalas);
 			         novaListaPredios.add(novoPredio);
 		               

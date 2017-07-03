@@ -55,21 +55,20 @@ public class Alocador {
 		List<Turma> turmaAloc;
 		List<Horario> horarioAloc;
 		disciplinaAloc = disciplinas;
-		Ficha novaFicha = null;
+		Ficha novaFicha;
 		
-		
-		for(int i =0; i< disciplinaAloc.size(); i++){
-			
+		for(int i = 0; i< disciplinaAloc.size(); i++){
+
 			turmaAloc = disciplinaAloc.get(i).getTurmas();
 			for(int j = 0; j < turmaAloc.size();j++){
 				horarioAloc = turmaAloc.get(j).getHorarios();
 				for(int k = 0; k < horarioAloc.size() ; k++ ){
-					
 					novaFicha = new Ficha(turmaAloc.get(j).getProfessor(), 
 										  turmaAloc.get(j).getNroAlunos(),
 										  turmaAloc.get(j).getID(),
-										  horarioAloc.get(j).getRequisitos(),
-										  horarioAloc.get(k),disciplinaAloc.get(i).getID());
+										  horarioAloc.get(k).getRequisitos(),
+										  horarioAloc.get(k),
+										  disciplinaAloc.get(i).getID());
 					//:'(
 					
 					for(int f = 0; f < turmaAloc.size(); f++){
@@ -90,9 +89,10 @@ public class Alocador {
 							}
 						}
 					}
-					horarioAloc.remove(k);
+					this.fichas.add(novaFicha);
+					if(!horarioAloc.isEmpty())
+						horarioAloc.remove(k);
 				}	
-				this.fichas.add(novaFicha);
 
 			}	
 		}
@@ -104,13 +104,12 @@ public class Alocador {
 		List<Sala> pioresSalas, pioresSalasRef;
 		int index = 0;
 		pioresSalas = new ArrayList<Sala>();
-		
 		for(int i = 0; i < this.fichas.size(); i++){
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
 				
 				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
-					
+					System.out.println("");
 					index++;
 				}
 				
@@ -148,13 +147,19 @@ public class Alocador {
 			
 			
 		}
-		this.predios.get(0).getSalas().get(0).imprimeAgenda();
 	}
 	public List <Predio> getPredios(){
 		
 		 
 		
 			return predios;
+		
+	}
+	public List<Ficha> getFichas(){
+		
+		return this.fichas;
+		
+		
 		
 	}
 }
