@@ -54,4 +54,31 @@ public class Ficha {
 		
 		
 	}
+	
+	public boolean compareMaps(Map<Integer, Boolean> map1, Map<Integer, Boolean> map2){
+		
+		Set<Integer> chaves1 = map1.keySet();
+		Set<Integer> chaves2 = map2.keySet();
+		
+		List<Integer> lista1 = new ArrayList<Integer>();
+		List<Integer> lista2 = new ArrayList<Integer>();
+		
+		for(Integer chave1 : chaves1){
+			if (map1.get(chave1) == true){
+				lista1.add(chave1);
+			}
+		}
+		
+		for(Integer chave2 : chaves2){
+			if (map2.get(chave2) == true){
+				lista2.add(chave2);
+			}
+		}
+		
+		for(int i=0; i<lista2.size(); i++){
+			if(lista2.contains(lista1.get(i)) == false)
+				return false;
+		}
+		return true;
+	}
 }
