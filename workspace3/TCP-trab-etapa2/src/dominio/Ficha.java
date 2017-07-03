@@ -50,7 +50,7 @@ public class Ficha {
 		}
 
 		
-		return "Disciplina:" + this.disciplina +"Turmas:" + listaTurmas + "Horario:" + this.horario.toString() + "Professor:" + this.professor; 
+		return " Disciplina:" + this.disciplina +" Turmas:" + listaTurmas +"\n"+  this.horario.toString()  + " Professor:" + this.professor; 
 		
 		
 	}

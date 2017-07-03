@@ -26,6 +26,6 @@ public class Hora {
 		
 		
 		
-		return Integer.toString(horas) + ":" + Integer.toString(minutos); 
+		return Integer.toString(this.horas) + ":" + Integer.toString(this.minutos); 
 	}
 }

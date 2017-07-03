@@ -21,13 +21,7 @@
 		- <group number_of_students='20' teacher='ANDERSON MACIEL' id='B'>
 		  <session room_id='' duration='120' feature_ids='1' building_id='' weekday='5' start_time='15:30'/> 
 		  </group>
-		- <group number_of_students='40' teacher='ANTONIO CARLOS SCHNEIDER BECK FILHO' id='C, D'>
-		  <session room_id='' duration='120' building_id='' weekday='1' start_time='10:30'/> 
-		  <session room_id='' duration='120' building_id='' weekday='3' start_time='10:30'/> 
-		  </group>
-		- <group number_of_students='23' teacher='ULISSES BRISOLARA CORREA' id='C'>
-		  <session room_id='' duration='120' feature_ids='1' building_id='' weekday='1' start_time='13:30'/> 
-		  </group>
+
 		- <group number_of_students='17' teacher='ULISSES BRISOLARA CORREA' id='D'>
 		  <session room_id='' duration='120' feature_ids='1' building_id='' weekday='3' start_time='13:30'/> 
 		  </group>
@@ -632,9 +626,7 @@
 	</features>
 	<buildings>
 			<building id='43412(65)'>
-				<room id='ANFV (Anfiteatro Vermelho)' feature_ids='3, 5, 8' number_of_places='76'>
-					
-				</room>
+
 				<room id='ANFA (Anfiteatro Azul)' feature_ids='3, 5, 8' number_of_places='76'></room>
 				<room available_for_allocation='false' id='214' feature_ids='4, 5' number_of_places='15'></room>
 				<room available_for_allocation='false' id='216' feature_ids='4, 5' number_of_places='15'>
