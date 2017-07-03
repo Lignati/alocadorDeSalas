@@ -65,6 +65,8 @@ public class Sala {
 	{
 		return agenda;
 	}
+<<<<<<< HEAD
+=======
 	public void imprimeAgenda(){
 		Set<Horario> chaves = this.agenda.keySet();
 		for (Iterator<Horario> iterator = chaves.iterator(); iterator.hasNext();)
@@ -83,5 +85,8 @@ public class Sala {
 		
 	}
 	
+>>>>>>> 940f2e181036ca95864607319b1f82654b2353aa
 
 }
+
+
