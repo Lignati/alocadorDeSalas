@@ -20,7 +20,13 @@ public class TCP {
 		alocador.AlocaSala();
 		List<Predio> predios = alocador.getPredios();
 		for(int i = 0; i < predios.size();i++){
-			alocador.getPredios().get(i).imprimePredio();
+			for(int j = 0; j < predios.get(i).getSalas().size();j++){
+				//System.out.println(predios.get(i).getID() + predios.get(i).getSalas().get(j).getIDSala());
+				predios.get(i).getSalas().get(j).imprimeAgenda();
+				
+				
+			}
+			
 			
 		}
 	}

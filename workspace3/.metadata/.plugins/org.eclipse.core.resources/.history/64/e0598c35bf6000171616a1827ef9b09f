@@ -109,6 +109,7 @@ public class Alocador {
 				index = 0;
 				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario().toString()) == true){
 					index++;
+					System.out.println(index);
 
 				}
 				
@@ -155,7 +156,7 @@ public class Alocador {
 	
 				}
 	
-				this.predios.get(referenciaSala.get(l)).salas.set(g, pioresSalas.get(l));
+				this.predios.get(referenciaSala.get(l)).salas.add(g, pioresSalas.get(l));
 			}
 			
 		}

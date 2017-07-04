@@ -155,7 +155,7 @@ public class Alocador {
 	
 				}
 	
-				this.predios.get(referenciaSala.get(l)).salas.set(g, pioresSalas.get(l));
+				this.predios.get(referenciaSala.get(l)).salas.put(g, pioresSalas.get(l));
 			}
 			
 		}
