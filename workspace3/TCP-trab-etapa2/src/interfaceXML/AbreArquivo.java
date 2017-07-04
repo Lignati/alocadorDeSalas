@@ -40,15 +40,14 @@ public class AbreArquivo {
 			
 			mapaRecursos.put(nroRecurso, true);
 		}
-		for(int i=0; i< mapaRecursos.size() ;i++){
+		for(int i=0; i<recursos.length(); i+=3)
+		{
+			aux = recursos.substring(i, i+1);
+			nroRecurso = Integer.parseInt(aux);
 			
-			if(!mapaRecursos.containsKey(i)){
-				
-				mapaRecursos.put(i, false);
-			}
-			
-			
+			mapaRecursos.put(nroRecurso, true);
 		}
+		
 		
 		return mapaRecursos;
 	}
@@ -100,7 +99,7 @@ public class AbreArquivo {
 			                       Element elementoHorario = (Element) noHorario;      
 		                    	   novoHorario = new Horario(elementoHorario.getAttribute("weekday"), 
 					            		   Integer.valueOf(elementoHorario.getAttribute("duration")),
-					            		   this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute	("feeature_id"))); 
+					            		   this.montaHora(elementoHorario.getAttribute("start_time")),montaRecursos(elementoHorario.getAttribute("feature_ids"))); 
 		                    	   		   novaListaHorarios.add(novoHorario);
 				                   }
 				                   
@@ -146,7 +145,7 @@ public class AbreArquivo {
 	                       Element elementoSala = (Element) noSala;      
 	                       novaSala = new Sala(Integer.valueOf(elementoSala.getAttribute("number_of_places")),
 			            		   Boolean.parseBoolean(elementoSala.getAttribute("available_for_allocation")),
-			            		   elementoSala.getAttribute("note"), elementoSala.getAttribute("id"),this.montaRecursos(elementoSala.getAttribute("feature_idsfeature_ids")));
+			            		   elementoSala.getAttribute("note"), elementoSala.getAttribute("id"),this.montaRecursos(elementoSala.getAttribute("feature_ids")));
                    	   		   novaListaSalas.add(novaSala);
 		                   }
 		                   

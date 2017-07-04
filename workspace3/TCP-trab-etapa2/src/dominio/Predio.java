@@ -54,10 +54,16 @@ public class Predio {
 		for(int i = 0; i < getSalas().size(); i++){
 			
 			System.out.println(getSalas().get(i).getIDSala());
+			getSalas().get(i).imprimeAgenda();
 			
 
 			
 		}
+		
+	}
+	public String getID(){
+		
+		return this.id;
 		
 	}
 
