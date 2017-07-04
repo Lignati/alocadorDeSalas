@@ -11,7 +11,7 @@ public class Sala {
 	
 	String tipo;
 	String id;
-	Map<String, Ficha> agenda;
+	Map<Horario, Ficha> agenda;
 	Map<Integer, Boolean> recurso;
 	String note;
 	
@@ -22,7 +22,7 @@ public class Sala {
 		this.disponivel = disponivel;
 		this.tipo = tipo;
 		this.id = id;
-		this.agenda = new HashMap <String,  Ficha>();
+		this.agenda = new HashMap <Horario,  Ficha>();
 		this.recurso = recurso;
 		
 	}
@@ -60,22 +60,22 @@ public class Sala {
 		return this.recurso;
 	}
 	
-	public Map<String, Ficha> getAgenda()
+	public Map<Horario, Ficha> getAgenda()
 	{
 		return agenda;
 	}
 
 	public void imprimeAgenda(){
-		Set<String> chaves = this.agenda.keySet();
-		for (Iterator<String> iterator = chaves.iterator(); iterator.hasNext();)
+		Set<Horario> chaves = this.agenda.keySet();
+		for (Iterator<Horario> iterator = chaves.iterator(); iterator.hasNext();)
 		{
-			String chave = iterator.next();
+			Horario chave = iterator.next();
 			if(chave != null)
 				System.out.println(agenda.get(chave).toString() + this.id);
 			else
 				System.out.println("k");
 		}
-		for (String key: agenda.keySet()){
+		for (Horario key: agenda.keySet()){
 			System.out.println(agenda.get(key).toString() + " " + this.id + "\n");
 
 
