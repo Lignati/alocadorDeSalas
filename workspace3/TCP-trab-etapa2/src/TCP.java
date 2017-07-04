@@ -22,7 +22,7 @@ public class TCP {
 		for(int i = 0; i < predios.size();i++){
 			for(int j = 0; j < predios.get(i).getSalas().size();j++){
 
-				predios.get(i).getSalas().get(j).imprimeAgenda();
+				//predios.get(i).getSalas().get(j).imprimeAgenda();
 				
 				
 			}

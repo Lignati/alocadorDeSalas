@@ -23,7 +23,7 @@ public class Sala {
 		this.tipo = tipo;
 		this.id = id;
 		this.agenda = new HashMap <Horario,  Ficha>();
-		this.recurso = new HashMap<Integer, Boolean>();
+		this.recurso = recurso;
 		
 	}
 	
@@ -43,11 +43,10 @@ public class Sala {
 		for(Iterator<Integer> iterator = chaves.iterator(); iterator.hasNext();)
 		{
 			Integer chave = iterator.next();
-			Boolean validade = (Boolean)recurso.get(chave);
+			Boolean validade = (Boolean)this.recurso.get(chave);
 			if(validade == true)
 				cont++;
 		}
-		
 		return cont;
 	}
 	

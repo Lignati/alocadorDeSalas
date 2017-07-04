@@ -1,9 +1,6 @@
 package dominio;
 import java.util.*;
 
-import java.util.Collections;
-import java.util.List;
-
 public class Alocador {
 	
 	List<Predio> predios;
@@ -25,7 +22,7 @@ public class Alocador {
 		for(int k =0; k < predios.size(); k++){
 			for( int i=this.predios.get(k).getSalas().size(); i>=1; i--){
 				for(int j=1; j<i; j++){
-					if(this.predios.get(k).getSalas().get(j-1).getNumeroRecursos() > this.predios.get(k).getSalas().get(j).getNumeroRecursos()){
+					if(this.predios.get(k).getSalas().get(j-1).getNumeroRecursos() < this.predios.get(k).getSalas().get(j).getNumeroRecursos()){
 						Collections.swap(this.predios.get(k).getSalas(), j, j-1);
 					}
 				}
@@ -102,48 +99,53 @@ public class Alocador {
 		
 		List<Sala> salasDoPredio;
 		List<Sala> pioresSalas, pioresSalasRef;
+		List<Integer> referenciaSala;
 		int index = 0;
 		pioresSalas = new ArrayList<Sala>();
+		referenciaSala = new ArrayList<Integer>();
 		for(int i = 0; i < this.fichas.size(); i++){
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
 				
 				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
-					System.out.println("");
 					index++;
 				}
 				
-				pioresSalas.add(j, salasDoPredio.get(index));	
+				pioresSalas.add(j, salasDoPredio.get(index));
+				referenciaSala.add(j,j);
 			}
-			pioresSalasRef = pioresSalas;
 			Sala Primeira = pioresSalas.get(0);
 			
 			for(int k = 1; k < pioresSalas.size(); k++){
 				
-				if(pioresSalas.get(k).getNumeroRecursos() < Primeira.getNumeroRecursos())
+				if(pioresSalas.get(k).getNumeroRecursos() < Primeira.getNumeroRecursos()){
 					Collections.swap(pioresSalas, 0, k);
+					Collections.swap(referenciaSala,0,k);
+				}
 			}
 			int l;
 			for( l = 0; l < pioresSalas.size(); l++){
-				
-				if(this.fichas.get(i).compareMaps(this.fichas.get(i).getRequisitos(), pioresSalas.get(l).getRecurso()) == true){
+				//System.out.println(i);
+				System.out.println( pioresSalas.get(l).getIDSala());
+				//System.out.println("REFERENCIA: " + referenciaSala.get(l));
+				if(this.compareMaps(this.fichas.get(i).getRequisitos(), pioresSalas.get(l).getRecurso()) == true){
+
+
 					pioresSalas.get(l).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
+					//System.out.println(i);
+					//System.out.println(pioresSalas.get(l).getIDSala());
 					break;
 				}
-			}	
+			}
+			System.out.println("l" + l + " i" + i + "\n \n");
 			int g = 0;
-			while(!pioresSalas.get(l).getIDSala().equals( pioresSalasRef.get(g).getIDSala())){
-				
+			while(!(pioresSalas.get(l).getIDSala().equals( this.predios.get(referenciaSala.get(l)).getSalas().get(g).getIDSala()))){
 				g++;
-				
+				System.out.println(pioresSalas.get(l).getIDSala() + " : " + this.predios.get(referenciaSala.get(l)).getSalas().get(g).getIDSala()+ "->" + this.predios.get(referenciaSala.get(l)).getID() + "g");
+
 			}
-			int f =0 ;
-			while(!this.predios.get(g).getSalas().get(f).getIDSala().equals( pioresSalas.get(l).getIDSala())){
-				
-				f++;
-				
-			}
-			this.predios.get(g).getSalas().add(f, pioresSalas.get(l));
+
+			this.predios.get(referenciaSala.get(l)).getSalas().add(g, pioresSalas.get(l));
 			
 			
 		}
@@ -161,5 +163,31 @@ public class Alocador {
 		
 		
 		
+	}
+	public boolean compareMaps(Map<Integer, Boolean> map1, Map<Integer, Boolean> map2){
+		
+		Set<Integer> chaves1 = map1.keySet();
+		Set<Integer> chaves2 = map2.keySet();
+		
+		List<Integer> lista1 = new ArrayList<Integer>();
+		List<Integer> lista2 = new ArrayList<Integer>();
+		
+		for(Integer chave1 : chaves1){
+			if (map1.get(chave1) == true){
+				lista1.add(chave1);
+			}
+		}
+		
+		for(Integer chave2 : chaves2){
+			if (map2.get(chave2) == true){
+				lista2.add(chave2);
+			}
+		}
+		
+		for(int i=0; i<lista2.size() && i < lista1.size(); i++){
+			if(lista2.contains(lista1.get(i)) == false)
+				return false;
+		}
+		return true;
 	}
 }

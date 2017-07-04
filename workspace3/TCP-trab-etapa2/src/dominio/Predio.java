@@ -60,5 +60,10 @@ public class Predio {
 		}
 		
 	}
+	public String getID(){
+		
+		return this.id;
+		
+	}
 
 }
