@@ -54,12 +54,6 @@ public class Ficha {
 		
 		
 	}
-	public Horario geetHorario(){
-		
-		return this.horario;
-		
-		
-	}
 	
 
 }

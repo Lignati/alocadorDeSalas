@@ -106,8 +106,8 @@ public class Alocador {
 		for(int i = 0; i < this.fichas.size(); i++){
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
-				index = 0;
-				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
+				
+				while((salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario())  == false)){
 					index++;
 					System.out.println(index);
 				}

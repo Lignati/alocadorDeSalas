@@ -106,10 +106,9 @@ public class Alocador {
 		for(int i = 0; i < this.fichas.size(); i++){
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
-				index = 0;
-				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
+				
+				while((salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true)&& (salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true)){
 					index++;
-					System.out.println(index);
 				}
 				
 				pioresSalas.add(j, salasDoPredio.get(index));
@@ -141,7 +140,7 @@ public class Alocador {
 						
 						if(this.compareMaps(this.fichas.get(i).getRequisitos(), this.predios.get(ii).getSalas().get(jj).getRecurso() )&&(this.predios.get(ii).getSalas().get(jj).getAgenda().containsKey(this.fichas.get(i).getHorario()) == false)){
 							
-							this.predios.get(ii).salas.get(jj).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
+							this.predios.get(ii).getSalas().get(jj).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
 							break;
 						}
 					}				
@@ -155,7 +154,7 @@ public class Alocador {
 	
 				}
 	
-				this.predios.get(referenciaSala.get(l)).salas.add(g, pioresSalas.get(l));
+				this.predios.get(referenciaSala.get(l)).getSalas().add(g, pioresSalas.get(l));
 			}
 			
 		}

@@ -106,10 +106,9 @@ public class Alocador {
 		for(int i = 0; i < this.fichas.size(); i++){
 			for(int j = 0; j < this.predios.size(); j++){
 				salasDoPredio = this.predios.get(j).getSalas();
-				index = 0;
+				
 				while(salasDoPredio.get(index).getAgenda().containsKey(this.fichas.get(i).getHorario()) == true){
 					index++;
-					System.out.println(index);
 				}
 				
 				pioresSalas.add(j, salasDoPredio.get(index));
@@ -130,7 +129,7 @@ public class Alocador {
 				if(this.compareMaps(this.fichas.get(i).getRequisitos(), pioresSalas.get(l).getRecurso()) == true){
 
 
-					pioresSalas.get(l).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
+					pioresSalas.get(l).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
 		
 					break;
 				}
@@ -139,23 +138,24 @@ public class Alocador {
 				for(int ii = 0; ii < this.predios.size(); ii++){
 					for(int jj = 0; jj < this.predios.get(ii).getSalas().size(); jj++){
 						
-						if(this.compareMaps(this.fichas.get(i).getRequisitos(), this.predios.get(ii).getSalas().get(jj).getRecurso() )&&(this.predios.get(ii).getSalas().get(jj).getAgenda().containsKey(this.fichas.get(i).getHorario()) == false)){
+						if(this.compareMaps(this.fichas.get(i).getRequisitos(), this.predios.get(ii).getSalas().get(jj).getRecurso()) == true){
 							
-							this.predios.get(ii).salas.get(jj).agenda.put(this.fichas.get(i).horario, this.fichas.get(i));
-							break;
+							this.predios.get(ii).getSalas().get(jj).getAgenda().put(this.fichas.get(i).horario, this.fichas.get(i));
 						}
 					}				
 				}
 	
 			}
 			else{
+				System.out.println("l" + l + " i" + i + "\n \n");
 				int g = 0;
 				while(!(pioresSalas.get(l).getIDSala().equals( this.predios.get(referenciaSala.get(l)).getSalas().get(g).getIDSala()))){
 					g++;
+					System.out.println(pioresSalas.get(l).getIDSala() + " : " + this.predios.get(referenciaSala.get(l)).getSalas().get(g).getIDSala()+ "->" + this.predios.get(referenciaSala.get(l)).getID() + "g");
 	
 				}
 	
-				this.predios.get(referenciaSala.get(l)).salas.add(g, pioresSalas.get(l));
+				this.predios.get(referenciaSala.get(l)).getSalas().add(g, pioresSalas.get(l));
 			}
 			
 		}
