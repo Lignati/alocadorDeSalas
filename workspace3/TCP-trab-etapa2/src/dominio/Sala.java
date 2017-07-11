@@ -72,11 +72,9 @@ public class Sala {
 			String chave = iterator.next();
 			if(chave != null)
 				System.out.println(agenda.get(chave).toString() + this.id);
-			else
-				System.out.println("k");
 		}
 		for (String key: agenda.keySet()){
-			System.out.println(agenda.get(key).toString() + " " + this.id + "\n");
+			System.out.println(agenda.get(key).toString() + "\n");
 
 
 		} 
