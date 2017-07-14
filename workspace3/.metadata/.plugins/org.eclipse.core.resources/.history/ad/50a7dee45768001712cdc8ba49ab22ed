@@ -1,0 +1,51 @@
+import java.util.*;
+import interfaceXML.*;
+import dominio.*;
+import org.raapi.*;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+public class TCP {
+	public static void main(String [ ] args)
+	{
+		AbreArquivo arquivo = new AbreArquivo("x.xml");
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
+		Alocador alocador = new Alocador(arquivo.getPredios(), arquivo.getDisciplinas());
+		alocador.montaFichas();
+		for(int i = 0; i< alocador.getFichas().size(); i++){
+			
+			//System.out.println(alocador.getFichas().toString());
+			
+			
+		}
+		alocador.ordenaPrioridadesSala();
+		
+		alocador.AlocaSala();
+		List<Predio> predios = alocador.getPredios();
+		for(int i = 0; i < predios.size();i++){
+			alocador.getPredios().get(i).imprimePredio();
+			
+		}
+		
+		
+		LeArquivoExcel arq2 = new LeArquivoExcel("planilha.xlsx");
+		HSSFWorkbook wb = arq2.AbreXLS();
+		
+		//Variaveis X para indicar operacoes XSL
+		
+		List<Session> Xsessoes;
+		List<Building> Xpredios;
+		List<Feature> Xrecursos;
+		List<Course> Xdisciplinas;
+		
+		Xpredios = arq2.montaPredios();
+		Xsessoes = arq2.montaSessoes();
+		Xrecursos = arq2.montaRecursos();
+		Xdisciplinas = arq2.montaDisciplinas();
+		
+		
+		
+	}
+
+}

@@ -65,7 +65,7 @@ public class Sala {
 		return agenda;
 	}
 
-	public void imprimeAgenda(){
+	public Map<String, Ficha> imprimeAgenda(){
 		Set<String> chaves = this.agenda.keySet();
 		for (Iterator<String> iterator = chaves.iterator(); iterator.hasNext();)
 		{
@@ -77,7 +77,8 @@ public class Sala {
 			System.out.println(agenda.get(key).toString() + "\n");
 
 
-		} 
+		}
+		return this.agenda;
 		
 	}
 	
