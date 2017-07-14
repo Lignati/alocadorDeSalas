@@ -33,7 +33,6 @@ public class LeArquivoExcel {
 	{
 		List<Feature> recursos = new ArrayList<Feature>();
 		try {
-			//cria um workbook para lidar com os dados do excel
 		  	POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
 		    @SuppressWarnings("resource")
 			HSSFWorkbook wb = new HSSFWorkbook(fs);
@@ -46,17 +45,15 @@ public class LeArquivoExcel {
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas 
 		    	    
 		    int c=0;
-		    // percorre da segunda linha até a última, pois a primeira
-		    // possui somente o nome de cada coluna
 		    for(int r=1; r<linhas; r++) {
-		        linha = planilha.getRow(r); //metodo para pegar linha a linha
+		        linha = planilha.getRow(r);
 		        if(linha != null) {
 		        	
-	                celula = linha.getCell((short)c); //metodo para pegar celula a celula 
+	                celula = linha.getCell((short)c);
 	                String NomeRecurso = celula.getStringCellValue(); c++;
 	                
 	                celula = linha.getCell((short)c);
-	                String IDRecurso = celula.getStringCellValue(); c++; //metodo para converter para string o conteudo de cada celula
+	                String IDRecurso = celula.getStringCellValue(); c++;
 	                
 	                Identifier IdRec = new ID_Name(IDRecurso, NomeRecurso);
 	                String RecursoHidden = celula.getStringCellValue();
@@ -65,8 +62,7 @@ public class LeArquivoExcel {
 	                hidden = !(RecursoHidden.equals(""));
 	                Feature novoRecurso = new Feature(IdRec, hidden);
 	                
-	                recursos.add(novoRecurso); c=0;  	//adiciona novo recurso na lista de recursos que vai ser retornada
-	                									//para o algoritmo de alocacao
+	                recursos.add(novoRecurso); c=0;  	
 		        }
 		    }
 		} catch(Exception ioe) {
@@ -100,30 +96,19 @@ public class LeArquivoExcel {
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
 		    int c=0, i=1, ident=0, r=1; //flags
 		    
-		    //r inicia em 1 para indicar a primeira linha a ser lida 
-		    //(no caso é a segunda, se fosse a primeira, r comecaria em 0
 		    while(r<linhas)
 		    {
-		    	linhaInicial 		= planilha.getRow(i);					//i soh eh alterado quando alterar o predio
-		    	
-		    	//ident eh fixo em zero para sempre pegar a primeira celula de cada linha
-			    celulaInicial 		= linhaInicial.getCell((short)ident);	
+		    	linhaInicial 		= planilha.getRow(i);
+			    celulaInicial 		= linhaInicial.getCell((short)ident);
 			    celula 				= linhaInicial.getCell((short)ident);
 			    String IDPredio 	= celulaInicial.getStringCellValue();		    
 			    Identifier bid 		= new ID(IDPredio);
 	            Building novoPredio = new Building(bid);
-	            
-	            //enquanto a string da celula inicial for igual a string da celula inicial
-	            //das linhas seguintes
-	            //ou seja, celulaInicial.getStringCellValue contem o id do predio
-	            //e compara com a string da celula incial das linhas seguintes para ver
-	            //se o predio eh o mesmo ou se alterou
 		    		    
 			    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue())) {
 			    	
 			        linha = planilha.getRow(r);
 		        	
-			        //variavel c eh setada constantemente para pegar a celula certa de cada linha
 		        	c=1; celula = linha.getCell((short)c);
 		            String IDSala = celula.getStringCellValue(); c=4;
 		            Identifier bidSala = new ID(IDSala);
@@ -192,20 +177,14 @@ public class LeArquivoExcel {
 		    while(r<linhas)
 		    {
 		    	linhaInicial 			= planilha.getRow(i);
-		    	
-		    	//pega as duas primeiras celulas
 			    celulaInicial 			= linhaInicial.getCell((short)ident);
 			    celulaInicial2			= linhaInicial.getCell((short)ident1);
-			    
+			    celula 					= linhaInicial.getCell((short)ident);
 			    String NomeDisciplina 	= celulaInicial.getStringCellValue();
 			    String IDDisciplina		= celulaInicial2.getStringCellValue();
-			    
-			    celula 					= linhaInicial.getCell((short)ident);
 			    Identifier idDisciplina = new ID_Name(IDDisciplina, NomeDisciplina);
 	            Course novaDisciplina 	= new Course(idDisciplina);
-	            
-		    	//enquanto nao alterar a disciplina
-	            //mesma logica do while do metodo montaPredios
+		    		    
 			    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue()))
 			    {	
 			    	linha = planilha.getRow(r);
@@ -225,11 +204,9 @@ public class LeArquivoExcel {
 		        	Group novaTurma = new Group(NroAlunos, professores, turmaID);
 		        	novaDisciplina.addGroup(novaTurma);
 		        	
-		        	//trecho para pegar linha seguinte a atual e comparar id
 		        	d=r+1; linhaInicial2 = planilha.getRow(d);
 		        	celulaInicial3 = linhaInicial2.getCell((short)ident2);
 		        	
-		        	//enquanto for o mesmo id para uma mesma disciplina
 		        	while(IDTurma.equals(celulaInicial3.getStringCellValue()))
 		        	{
 		        		linha = planilha.getRow(r);
@@ -292,18 +269,15 @@ public class LeArquivoExcel {
 			        	novaDisciplina.getGroups().get(acomp).addSession(novaSessao);acomp++;
 			        	r0 = r++; linhaInicial2 = planilha.getRow(r);
 			        	celulaInicial3 = linha.getCell((short)ident2); 
-			        	//flag para haver se existiam ou nao ids iguais para uma mesma disciplina
 			        	flag = 1;
 		        	}
-		        	//se nao existem ids iguais a leitura normalmente na proxima linha
 		        	if(flag == 0)
 		        		r++;
-		        	//se existem, a leitura deve seguir onde parou no laço que verificava mesmos ids
 		        	else
 		        		r = r0;
 		            linha = planilha.getRow(r);
 		            celula = linha.getCell((short)c);
-			    } i=r; //atribuicao para quando mudar a disciplina
+			    } i=r;
 		    	disciplinas.add(novaDisciplina);
 		    }
 		    	
