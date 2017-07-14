@@ -1,6 +1,10 @@
 import java.util.*;
 import interfaceXML.*;
 import dominio.*;
+import org.raapi.*;
+
+
+
 public class TCP {
 	public static void main(String [ ] args)
 	{
@@ -23,6 +27,35 @@ public class TCP {
 			alocador.getPredios().get(i).imprimePredio();
 			
 		}
+		
+		Allocation al;
+		LeArquivoExcel arq2 = new LeArquivoExcel("planilha.xlsx");
+		
+		List<Feature> recursos = arq2.montaRecursos();
+		List<Building> buildings = arq2.montaPredios();
+		List<Course> disciplinas = arq2.montaDisciplinas();
+		
+		RAAPI.mergeSessionsByTeacher(disciplinas);
+		
+		List<Session> sessoes = new ArrayList<Session>();
+		
+		for(Course c : disciplinas)
+		{
+			for(Session s : c.getSessions())
+			{
+				sessoes.add(s);
+			}
+		}
+		
+		RAAPI.allocateSessions(buildings, sessoes);
+		
+		al = new Allocation(disciplinas, buildings, recursos);
+		// 14/07/2017 03:07 AM -- é só isso, nao tem mais jeito, acabou, boa sorte
+		//					   -- nao tenho o que dizer, sao só palavras
+		//					   -- thats it, theres no way, its over, good luck
+		//					   -- i've nothing left to say, its only words
+		// trecho de um provérbio chines autor desconhecido
+		// ps falta escrever no arquivo xml e xsl! 
 	}
 
 }

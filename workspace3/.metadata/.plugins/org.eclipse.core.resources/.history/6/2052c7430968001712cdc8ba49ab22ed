@@ -1,0 +1,154 @@
+package interfaceXML;
+
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import dominio.*;
+import org.raapi.*;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.raapi.Session;
+
+
+
+public class LeArquivoExcel {
+	String nome;
+	
+	List<Building> predios;
+	List<Session> sessions;
+	
+	
+	
+	public LeArquivoExcel(String nome)
+	{
+		this.predios = new ArrayList<Building> ();
+		this.sessions = new ArrayList<Session> (); 
+		
+		this.nome = nome;
+	}
+	
+	
+	public List<Building> montaPredios()
+	{
+		try {
+		  	POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
+		    @SuppressWarnings("resource")
+			HSSFWorkbook wb = new HSSFWorkbook(fs);
+		    
+		    HSSFSheet sheet = wb.getSheetAt(0);
+		    HSSFRow row;
+		    HSSFCell cell;
+		    
+	
+		    int rows; // No of rows
+		    rows = sheet.getPhysicalNumberOfRows();
+	
+		    int cols = 0; // No of columns
+		    int tmp = 0;
+	
+		    for(int i = 0; i < rows; i++) {
+		        row = sheet.getRow(i);
+		        if(row != null) {
+		            tmp = sheet.getRow(i).getPhysicalNumberOfCells();
+		            if(tmp > cols) cols = tmp;
+		        }
+		    }
+		   
+		    
+		    for(int r = 0; r < rows; r++) {
+		        row = sheet.getRow(r);
+		        if(row != null) {
+		            for(int c = 0; c < cols; c++) {
+		                cell = row.getCell((short)c);
+		                if(cell != null) {
+		                	
+		                }
+		            }
+		        }
+		    }
+		}
+		
+		catch(Exception ioe) {
+		    ioe.printStackTrace();
+		}
+		
+	}
+	
+	public List<Course> montaDisciplinas()
+	{
+		
+	}
+	
+	public List<Feature> montaRecursos()
+	{
+		try {
+		  	POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
+		    @SuppressWarnings("resource")
+			HSSFWorkbook wb = new HSSFWorkbook(fs);
+		    
+		    //pega dados da segunda planilha a que possui informacoes dos recursos
+		    HSSFSheet planilha = wb.getSheetAt(1);
+		    
+		    HSSFRow linha;
+		    HSSFCell celula;
+		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas 
+		    
+		    /*
+		    int colunas = 0; // No of columns
+		    int tmp = 0;
+		    
+		    for(int i = 0; i < linhas; i++) {
+		        linha = planilha.getRow(i);
+		        if(linha != null) {
+		            tmp = planilha.getRow(i).getPhysicalNumberOfCells();
+		            if(tmp > colunas) colunas = tmp;
+		        }
+		    }
+		    */
+		    
+		    int c=0;
+		    for(int r = 0; r < linhas; r++) {
+		        linha = planilha.getRow(r);
+		        if(linha != null) {
+		        	
+	                celula = linha.getCell((short)c);
+	                if(celula != null) {
+	                	String NomeRecurso = celula.getStringCellValue(); c++;
+	                }
+	                	
+	                celula = linha.getCell((short)c);
+	                if(celula != null) {
+	                	String IDRecurso = celula.getStringCellValue(); c++;
+	                }	
+	                	 	
+	               Identifier IdRec = new ID_Name(IDRecurso, NomeRecurso);
+	               String RecursoHidden = celula.getStringCellValue();
+	                	
+		        }
+		    }
+		}
+		
+		catch(Exception ioe) {
+		    ioe.printStackTrace();
+		}
+		
+	}
+	
+	public List<Session> montaSessoes()
+	{
+		
+	}
+	
+	
+}
+
+
+
+	
+	
+
