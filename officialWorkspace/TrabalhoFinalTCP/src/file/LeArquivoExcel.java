@@ -15,6 +15,11 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 public class LeArquivoExcel {
 String nome;
@@ -22,6 +27,7 @@ String nome;
 	public LeArquivoExcel(String nome)
 	{	
 		this.nome = nome;
+		System.out.println(nome);
 	}
 	
 	
@@ -30,38 +36,60 @@ String nome;
 	{
 		List<Feature> recursos = new ArrayList<Feature>();
 		try {
-		  	POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
-		    @SuppressWarnings("resource")
-			HSSFWorkbook wb = new HSSFWorkbook(fs);
+			FileInputStream fs = new FileInputStream(nome);
+			XSSFWorkbook wb = new XSSFWorkbook (fs);
 		    
 		    //pega dados da segunda planilha a que possui informacoes dos recursos
-		    HSSFSheet planilha = wb.getSheetAt(1);
+		    XSSFSheet planilha = wb.getSheetAt(1);
 		    
-		    HSSFRow linha;
-		    HSSFCell celula;
+		    XSSFRow linha;
+		    XSSFCell celula;
+		    String NomeRecurso, IDRecurso;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas 
+		    //System.out.println(linhas);
 		    	    
 		    int c=0;
 		    for(int r=1; r<linhas; r++) {
 		        linha = planilha.getRow(r);
 		        if(linha != null) {
-		        	
 	                celula = linha.getCell((short)c);
-	                String NomeRecurso = celula.getStringCellValue(); c++;
-	                
-	                celula = linha.getCell((short)c);
-	                String IDRecurso = celula.getStringCellValue(); c++;
-	                
-	                Identifier IdRec = new ID_Name(IDRecurso, NomeRecurso);
-	                String RecursoHidden = celula.getStringCellValue();
-	                Boolean hidden;
-	                
-	                hidden = !(RecursoHidden.equals(""));
-	                Feature novoRecurso = new Feature(IdRec, hidden);
-	                
-	                recursos.add(novoRecurso); c=0;  	
+	                if(celula != null)
+	                {
+	                	NomeRecurso = celula.getStringCellValue(); c++;
+		                //System.out.print(NomeRecurso + "\t"); 
+		                celula = linha.getCell((short)c);
+		                if(celula != null)
+		                {
+		                	double id = celula.getNumericCellValue();
+			                IDRecurso = Double.toString(id); c++;
+			                //System.out.print(IDRecurso + "\t");
+			                Identifier IdRec = new ID_Name(IDRecurso, NomeRecurso);
+			                celula = linha.getCell((short)c);
+			                if(celula == null)
+			                {
+				                String RecursoHidden = "";
+				                Boolean hidden;
+				                hidden = !(RecursoHidden.equals(""));
+				                //System.out.print(hidden);
+				                Feature novoRecurso = new Feature(IdRec, hidden);   
+				                recursos.add(novoRecurso); c=0;
+			                }
+			                else
+			                {
+			                	boolean hide = celula.getBooleanCellValue();
+				                String RecursoHidden = Boolean.toString(hide);
+				                Boolean hidden;
+				                hidden = !(RecursoHidden.equals(""));
+				                //System.out.print(hidden);
+				                Feature novoRecurso = new Feature(IdRec, hidden);   
+				                recursos.add(novoRecurso); c=0;
+			                }
+			                //System.out.println("");
+		                }
+	                }                 	
 		        }
 		    }
+		    wb.close();
 		} catch(Exception ioe) {
 		    ioe.printStackTrace();
 		}
@@ -81,64 +109,75 @@ String nome;
         }
 		
 		try {
-			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
+			FileInputStream fs = new FileInputStream(nome);
 		    @SuppressWarnings("resource")
-			HSSFWorkbook wb = new HSSFWorkbook(fs);
+			XSSFWorkbook wb = new XSSFWorkbook (fs);
 		    
 		    //pega dados da segunda planilha a que possui informacoes dos predios
-		    HSSFSheet planilha = wb.getSheetAt(2);
+		    XSSFSheet planilha = wb.getSheetAt(2);
 		    
-		    HSSFRow linha, linhaInicial;
-		    HSSFCell celula, celulaInicial;
+		    XSSFRow linha, linhaInicial;
+		    XSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
+		    System.out.println(linhas);
+		    
 		    int c=0, i=1, ident=0, r=1; //flags
 		    
 		    while(r<linhas)
 		    {
 		    	linhaInicial 		= planilha.getRow(i);
-			    celulaInicial 		= linhaInicial.getCell((short)ident);
-			    celula 				= linhaInicial.getCell((short)ident);
-			    String IDPredio 	= celulaInicial.getStringCellValue();		    
-			    Identifier bid 		= new ID(IDPredio);
-	            Building novoPredio = new Building(bid);
-		    		    
-			    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue())) {
-			    	
-			        linha = planilha.getRow(r);
-		        	
-		        	c=1; celula = linha.getCell((short)c);
-		            String IDSala = celula.getStringCellValue(); c=4;
-		            Identifier bidSala = new ID(IDSala);
-		            
-		            celula = linha.getCell((short)c);
-		            String salaDisponivel = celula.getStringCellValue(); c=3;
-		            if(salaDisponivel.equals(""))
-		            	salaDisponivel = "true";
-		            
-	        		boolean disponivelBool;
-	        		if(salaDisponivel.equals("true"))
-	        			disponivelBool = true;
-	        		else
-	        			disponivelBool = false;
-	        		
-	        		celula = linha.getCell((short)c);
-		            String numeroDeLugares = celula.getStringCellValue(); c=2;
-		            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
-		            
-		            celula = linha.getCell((short)c);
-		            String IDRecursos = celula.getStringCellValue(); c=0;
-		            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
-		            for(String f : RecursosSala)
-		            {
-		            	Feature recursoSala = featureMap.get(f);
-		            	novaSala.addFeature(recursoSala);
-		            }
-		            
-		            novoPredio.addRoom(novaSala); r++;
-		            linha = planilha.getRow(r);
-		            celula = linha.getCell((short)c);
-			    } i=r; //atribuicao para setar para linha certa na planilha
-			    predios.add(novoPredio); 
+		    	if(linhaInicial != null)
+		    	{
+		    		celulaInicial 		= linhaInicial.getCell((short)ident);
+				    celula 				= linhaInicial.getCell((short)ident);
+				    if(celula != null)
+				    {
+				    	String IDPredio 	= celulaInicial.getStringCellValue();		    
+					    Identifier bid 		= new ID(IDPredio);
+			            Building novoPredio = new Building(bid);
+			            System.out.println(IDPredio);
+				    		    
+					    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue())) {
+					    	
+					        linha = planilha.getRow(r);
+				        	
+				        	c=1; celula = linha.getCell((short)c);
+				            String IDSala = celula.getStringCellValue(); c=4;
+				            Identifier bidSala = new ID(IDSala);
+				            
+				            celula = linha.getCell((short)c);
+				            String salaDisponivel = celula.getStringCellValue(); c=3;
+				            if(salaDisponivel.equals(""))
+				            	salaDisponivel = "true";
+				            
+			        		boolean disponivelBool;
+			        		if(salaDisponivel.equals("true"))
+			        			disponivelBool = true;
+			        		else
+			        			disponivelBool = false;
+			        		
+			        		celula = linha.getCell((short)c);
+				            String numeroDeLugares = celula.getStringCellValue(); c=2;
+				            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
+				            
+				            celula = linha.getCell((short)c);
+				            String IDRecursos = celula.getStringCellValue(); c=0;
+				            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
+				            for(String f : RecursosSala)
+				            {
+				            	Feature recursoSala = featureMap.get(f);
+				            	novaSala.addFeature(recursoSala);
+				            }
+				            
+				            novoPredio.addRoom(novaSala); r++;
+				            linha = planilha.getRow(r);
+				            celula = linha.getCell((short)c);
+					    } i=r; //atribuicao para setar para linha certa na planilha
+					    predios.add(novoPredio);
+				    }
+				    
+		    	}
+			     
 		    }
 	    } catch(Exception ioe) {
 	    		ioe.printStackTrace();
