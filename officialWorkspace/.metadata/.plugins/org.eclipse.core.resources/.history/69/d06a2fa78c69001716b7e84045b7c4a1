@@ -46,7 +46,7 @@ public class TCP {
 				sessoes.add(s);
 			}
 		}
-	
+		
 		RAAPI.allocateSessions(buildings, sessoes);
 		
 		
