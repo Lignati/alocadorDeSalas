@@ -31,3 +31,13 @@ Java Model Exception: Java Model Status [C:\Program Files\Java\jre1.8.0_121\lib\
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:165)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1006 2017-07-14 18:12:01.829
 !MESSAGE C:\Program Files\Java\jre1.8.0_121\lib\rt.jar is not on its project's build path
+!SESSION 2017-07-14 18:45:29.139 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/bernardolignati/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/bernardolignati/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2017-07-14 18:46:17.509
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
