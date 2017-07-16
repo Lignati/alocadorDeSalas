@@ -169,7 +169,7 @@ String nome;
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
 					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(", "));
-					            //System.out.println(RecursosSala.get(0));
+					            System.out.println(RecursosSala.get(0));
 					            for(String f : RecursosSala)
 					            {
 					            	Feature recursoSala = featureMap.get(f);

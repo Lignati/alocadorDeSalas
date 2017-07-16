@@ -145,7 +145,7 @@ String nome;
 				        		c=1; celula = linha.getCell((short)c);
 					            String IDSala = celula.getStringCellValue(); c=4;
 					            Identifier bidSala = new ID(IDSala);
-					            //System.out.println(IDSala + "\t\t");
+					            System.out.println(IDSala + "\t\t");
 					            
 					            celula = linha.getCell((short)c);
 					            if(celula == null)
@@ -168,8 +168,7 @@ String nome;
 					            
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
-					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(", "));
-					            //System.out.println(RecursosSala.get(0));
+					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
 					            for(String f : RecursosSala)
 					            {
 					            	Feature recursoSala = featureMap.get(f);
