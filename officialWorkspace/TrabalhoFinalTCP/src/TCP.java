@@ -35,15 +35,22 @@ public class TCP {
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
-		System.out.print("1");
+		System.out.println("1");
+
 		
 		List<Building> buildings = arq2.montaPredios();
-		System.out.print("2");
+		System.out.println("2");
+
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
+<<<<<<< HEAD
 		System.out.print("3");
 		
+=======
+>>>>>>> 463ccc46f43c832302a6f87bf33a5b49281de73b
 		
+		System.out.println("3");
+
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		
 		List<Session> sessoes = new ArrayList<Session>();
@@ -73,7 +80,7 @@ public class TCP {
 
 
 
-
+		System.out.println("aaaa");
 		
 		
 		

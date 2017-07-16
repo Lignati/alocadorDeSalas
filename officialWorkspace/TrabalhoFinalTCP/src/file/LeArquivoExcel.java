@@ -145,7 +145,7 @@ String nome;
 				        		c=1; celula = linha.getCell((short)c);
 					            String IDSala = celula.getStringCellValue(); c=4;
 					            Identifier bidSala = new ID(IDSala);
-					            //System.out.print(IDSala + "\t\t");
+					            //System.out.println(IDSala + "\t\t");
 					            
 					            celula = linha.getCell((short)c);
 					            if(celula == null)
@@ -168,7 +168,8 @@ String nome;
 					            
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
-					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
+					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(", "));
+					            //System.out.println(RecursosSala.get(0));
 					            for(String f : RecursosSala)
 					            {
 					            	Feature recursoSala = featureMap.get(f);
@@ -346,7 +347,6 @@ String nome;
 								        		
 								        	}
 								        	//System.out.println("    sem recursos");
-								        	//System.out.println(indice-1);
 								        	
 								        	novaDisciplina.getGroups().get(indice-1).addSession(novaSessao); 
 								        	r++; linha = planilha.getRow(r);
@@ -356,10 +356,12 @@ String nome;
 									        	celula = linha.getCell((short)ident1);
 								        	}	
 						        		}	
+						        		
 						        	}
 					    		}
 					    	}		     
 					    } i=r; indice = 0; 
+					    //System.out.println(r);
 				    	disciplinas.add(novaDisciplina);
 				    }
 		    	}
