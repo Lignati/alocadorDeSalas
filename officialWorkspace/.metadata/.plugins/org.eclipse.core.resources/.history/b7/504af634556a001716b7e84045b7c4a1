@@ -37,12 +37,11 @@ public class TCP {
 		List<Feature> recursos = arq2.montaRecursos();
 		System.out.println("1");
 
-		
-		List<Building> buildings = arq2.montaPredios();
-		System.out.println("2");
 
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
+		System.out.print("1");
+
 		
 		System.out.println("3");
 
@@ -62,7 +61,7 @@ public class TCP {
 		
 		
 		al = new Allocation(disciplinas, buildings, recursos);
-		/*try {
+		try {
 			RAAPI.createXML(al, "saida.xml");
 	
 	            
@@ -71,7 +70,7 @@ public class TCP {
 	        catch (IOException e)
 	        {
 	            System.out.println("EXCEPTION");
-	        }*/
+	        }
 
 
 

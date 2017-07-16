@@ -35,6 +35,7 @@ public class TCP {
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
+<<<<<<< HEAD
 		System.out.println("1");
 
 		
@@ -43,6 +44,16 @@ public class TCP {
 
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
+=======
+		System.out.print("1");
+		
+		List<Building> buildings = arq2.montaPredios();
+		System.out.print("2");
+		
+		List<Course> disciplinas = arq2.montaDisciplinas();
+		System.out.print("3");
+		/*
+>>>>>>> 7daeb414c732c2e8b388265125b271cd090dd2c8
 		
 		System.out.println("3");
 
@@ -50,19 +61,19 @@ public class TCP {
 		
 		List<Session> sessoes = new ArrayList<Session>();
 		
-		for(Course c : disciplinas)
+		/*for(Course c : disciplinas)
 		{
 			for(Session s : c.getSessions())
 			{
 				sessoes.add(s);
 			}
-		}
+		}*/
 	
 		RAAPI.allocateSessions(buildings, sessoes);
 		
 		
 		al = new Allocation(disciplinas, buildings, recursos);
-		/*try {
+		try {
 			RAAPI.createXML(al, "saida.xml");
 	
 	            
@@ -71,7 +82,7 @@ public class TCP {
 	        catch (IOException e)
 	        {
 	            System.out.println("EXCEPTION");
-	        }*/
+	        }
 
 
 

@@ -62,7 +62,7 @@ public class TCP {
 		
 		
 		al = new Allocation(disciplinas, buildings, recursos);
-		/*try {
+		try {
 			RAAPI.createXML(al, "saida.xml");
 	
 	            
@@ -71,7 +71,7 @@ public class TCP {
 	        catch (IOException e)
 	        {
 	            System.out.println("EXCEPTION");
-	        }*/
+	        }
 
 
 
