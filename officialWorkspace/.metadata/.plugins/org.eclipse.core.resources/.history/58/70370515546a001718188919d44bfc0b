@@ -35,13 +35,13 @@ public class TCP {
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
-		System.out.print("1");
+		//System.out.print("1");
 		
 		List<Building> buildings = arq2.montaPredios();
-		System.out.print("2");
+		//System.out.print("2");
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
-		System.out.print("3");
+		//System.out.print("3");
 		/*
 		
 		RAAPI.mergeSessionsByTeacher(disciplinas);

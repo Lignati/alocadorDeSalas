@@ -363,8 +363,6 @@ String nome;
 				    	disciplinas.add(novaDisciplina);
 				    }
 		    	}
-		    	else
-		    		r=linhas;
 		    } wb.close();
 		} catch(Exception ioe) {
     			ioe.printStackTrace();

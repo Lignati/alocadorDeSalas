@@ -234,7 +234,7 @@ String nome;
 				    if((celulaInicial != null) && (celula != null))
 				    {
 				    	String NomeDisciplina 	= celulaInicial.getStringCellValue();
-				    	//System.out.print(NomeDisciplina + " ");
+				    	System.out.print(NomeDisciplina + " ");
 					    String IDDisciplina		= celulaInicial2.getStringCellValue();
 					    //System.out.print(IDDisciplina + "\t");
 					    Identifier idDisciplina = new ID_Name(IDDisciplina, NomeDisciplina);
@@ -361,14 +361,18 @@ String nome;
 					    	}		     
 					    } i=r; indice = 0; 
 				    	disciplinas.add(novaDisciplina);
+				    	System.out.println("oi");
 				    }
 		    	}
 		    	else
+		    	{
 		    		r=linhas;
+		    	}
 		    } wb.close();
 		} catch(Exception ioe) {
     			ioe.printStackTrace();
     		}
+		System.out.println("oi2");
 		return disciplinas;
 	}
 }

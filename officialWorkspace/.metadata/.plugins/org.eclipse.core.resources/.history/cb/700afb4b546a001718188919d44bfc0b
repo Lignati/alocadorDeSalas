@@ -361,6 +361,7 @@ String nome;
 					    	}		     
 					    } i=r; indice = 0; 
 				    	disciplinas.add(novaDisciplina);
+				    	//System.out.println("oi");
 				    }
 		    	}
 		    	else
@@ -369,6 +370,7 @@ String nome;
 		} catch(Exception ioe) {
     			ioe.printStackTrace();
     		}
+		//System.out.println("oi2");
 		return disciplinas;
 	}
 }
