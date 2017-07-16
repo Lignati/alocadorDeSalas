@@ -93,7 +93,7 @@ String nome;
 		    HSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
 		    int c=0, i=1, ident=0, r=1; //flags
-		    System.out.println(linhas);
+		    
 		    while(r<linhas)
 		    {
 		    	linhaInicial 		= planilha.getRow(i);
@@ -190,7 +190,7 @@ String nome;
 		        	c=2; celula = linha.getCell((short)c);
 		        	String numeroDeAlunos = celula.getStringCellValue(); c=3;
 		        	int NroAlunos = Integer.parseInt(numeroDeAlunos);
-		        	
+		        	System.out.println(NroAlunos);
 		        	celula = linha.getCell((short)c); c=4;
 		        	String professor = celula.getStringCellValue();
 		        	List<String> professores = Arrays.asList(professor.split(""));

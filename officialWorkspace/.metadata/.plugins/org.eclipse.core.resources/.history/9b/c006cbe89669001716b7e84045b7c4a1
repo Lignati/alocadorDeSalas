@@ -9,22 +9,22 @@ public class TCP {
 	public static void main(String [ ] args)
 	{
 		AbreArquivo arquivo = new AbreArquivo("x.xml");
-		//arquivo.montaListaDisciplinas();
-		//arquivo.montaListaPredios();
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
 		Alocador alocador = new Alocador(arquivo.getPredios(), arquivo.getDisciplinas());
-		//alocador.montaFichas();
+		alocador.montaFichas();
 		for(int i = 0; i< alocador.getFichas().size(); i++){
 			
 			//System.out.println(alocador.getFichas().toString());
 			
 			
 		}
-		//alocador.ordenaPrioridadesSala();
+		alocador.ordenaPrioridadesSala();
 		
-		//alocador.AlocaSala();
+		alocador.AlocaSala();
 		List<Predio> predios = alocador.getPredios();
 		for(int i = 0; i < predios.size();i++){
-		//	alocador.getPredios().get(i).imprimePredio();
+			alocador.getPredios().get(i).imprimePredio();
 			
 		}
 		
@@ -51,7 +51,7 @@ public class TCP {
 		
 		
 		al = new Allocation(disciplinas, buildings, recursos);
-		try {
+		/*try {
 			RAAPI.createXML(al, "saida.xml");
 	
 	            
@@ -60,7 +60,7 @@ public class TCP {
 	        catch (IOException e)
 	        {
 	            System.out.println("EXCEPTION");
-	        }
+	        }*/
 
 
 

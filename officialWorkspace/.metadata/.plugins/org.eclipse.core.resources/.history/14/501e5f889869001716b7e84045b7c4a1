@@ -29,7 +29,7 @@ public class TCP {
 		}
 		
 		Allocation al;
-		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
+		LeArquivoExcel arq2 = new LeArquivoExcel("//Users//bernardolignati//Documents//GitHub//alocadorDeSalas//officialWorkspace//TrabalhoFinalTCP//y.xslx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
 		List<Building> buildings = arq2.montaPredios();
