@@ -11,40 +11,30 @@ public class TCP {
 	{
 		/*
 		AbreArquivo arquivo = new AbreArquivo("x.xml");
-		//arquivo.montaListaDisciplinas();
-		//arquivo.montaListaPredios();
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
 		Alocador alocador = new Alocador(arquivo.getPredios(), arquivo.getDisciplinas());
-		//alocador.montaFichas();
+		alocador.montaFichas();
 		for(int i = 0; i< alocador.getFichas().size(); i++){
 			
 			//System.out.println(alocador.getFichas().toString());
 			
 			
 		}
-		//alocador.ordenaPrioridadesSala();
+		alocador.ordenaPrioridadesSala();
 		
-		//alocador.AlocaSala();
+		alocador.AlocaSala();
 		List<Predio> predios = alocador.getPredios();
 		for(int i = 0; i < predios.size();i++){
-		//	alocador.getPredios().get(i).imprimePredio();
+			alocador.getPredios().get(i).imprimePredio();
 			
 		}
 		*/
 		
-		Allocation al;
+		//Allocation al;
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
-<<<<<<< HEAD
-		System.out.println("1");
-
-		
-		List<Building> buildings = arq2.montaPredios();
-		System.out.println("2");
-
-		
-		List<Course> disciplinas = arq2.montaDisciplinas();
-=======
 		System.out.print("1");
 		
 		List<Building> buildings = arq2.montaPredios();
@@ -53,21 +43,18 @@ public class TCP {
 		List<Course> disciplinas = arq2.montaDisciplinas();
 		System.out.print("3");
 		/*
->>>>>>> 7daeb414c732c2e8b388265125b271cd090dd2c8
 		
-		System.out.println("3");
-
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		
 		List<Session> sessoes = new ArrayList<Session>();
 		
-		/*for(Course c : disciplinas)
+		for(Course c : disciplinas)
 		{
 			for(Session s : c.getSessions())
 			{
 				sessoes.add(s);
 			}
-		}*/
+		}
 	
 		RAAPI.allocateSessions(buildings, sessoes);
 		
@@ -86,7 +73,7 @@ public class TCP {
 
 
 
-		System.out.println("aaaa");
+
 		
 		
 		
@@ -98,7 +85,7 @@ public class TCP {
 		//					   -- i've nothing left to say, its only words
 		// trecho de um proverbio chines autor desconhecido
 		// ps falta escrever no arquivo xml e xsl! 
-		
+		*/
 	}
 
 }

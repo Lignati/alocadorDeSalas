@@ -122,7 +122,7 @@ String nome;
 		    //System.out.println(linhas);
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
-		    System.out.println(linhas);
+		    
 		    while(r<linhas)
 		    {
 		    	linhaInicial 		= planilha.getRow(i);
@@ -346,6 +346,7 @@ String nome;
 								        		
 								        	}
 								        	//System.out.println("    sem recursos");
+								        	//System.out.println(indice-1);
 								        	
 								        	novaDisciplina.getGroups().get(indice-1).addSession(novaSessao); 
 								        	r++; linha = planilha.getRow(r);
@@ -355,13 +356,12 @@ String nome;
 									        	celula = linha.getCell((short)ident1);
 								        	}	
 						        		}	
-						        		
 						        	}
 					    		}
 					    	}		     
 					    } i=r; indice = 0; 
-					    System.out.println(r);
 				    	disciplinas.add(novaDisciplina);
+				    	//System.out.println("oi");
 				    }
 		    	}
 		    	else
@@ -370,6 +370,7 @@ String nome;
 		} catch(Exception ioe) {
     			ioe.printStackTrace();
     		}
+		//System.out.println("oi2");
 		return disciplinas;
 	}
 }
