@@ -111,7 +111,6 @@ String nome;
 		
 		try {
 			FileInputStream fs = new FileInputStream(nome);
-		    @SuppressWarnings("resource")
 			XSSFWorkbook wb = new XSSFWorkbook (fs);
 		    
 		    //pega dados da segunda planilha a que possui informacoes dos predios
@@ -189,7 +188,7 @@ String nome;
 				    
 		    	}
 			     
-		    }
+		    } wb.close();
 	    } catch(Exception ioe) {
 	    		ioe.printStackTrace();
 	    	}
@@ -210,7 +209,6 @@ String nome;
 		
 		try {
 			FileInputStream fs = new FileInputStream(nome);
-		    @SuppressWarnings("resource")
 			XSSFWorkbook wb = new XSSFWorkbook(fs);
 		    
 		    //pega dados da segunda planilha a que possui informacoes das disciplinas
@@ -365,7 +363,7 @@ String nome;
 				    	disciplinas.add(novaDisciplina);
 				    }
 		    	}
-		    }
+		    } wb.close();
 		} catch(Exception ioe) {
     			ioe.printStackTrace();
     		}
