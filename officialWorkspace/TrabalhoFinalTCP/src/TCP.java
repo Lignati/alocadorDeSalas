@@ -39,8 +39,9 @@ public class TCP {
 		
 		List<Building> buildings = arq2.montaPredios();
 		
-		/*
+		
 		List<Course> disciplinas = arq2.montaDisciplinas();
+		/*
 		
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		

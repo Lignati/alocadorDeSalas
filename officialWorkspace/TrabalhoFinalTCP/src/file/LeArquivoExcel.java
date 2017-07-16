@@ -9,12 +9,13 @@ import java.util.Map;
 
 //import dominio.*;
 import org.raapi.*;
-
+/*
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+*/
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -119,7 +120,7 @@ String nome;
 		    XSSFRow linha, linhaInicial;
 		    XSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
-		    System.out.println(linhas);
+		    //System.out.println(linhas);
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
 		    
@@ -135,7 +136,7 @@ String nome;
 				    	String IDPredio 	= celulaInicial.getStringCellValue();		    
 					    Identifier bid 		= new ID(IDPredio);
 			            Building novoPredio = new Building(bid);
-			            System.out.println(IDPredio + "\t\t");
+			            //System.out.println(IDPredio + "\t\t");
 				    		    
 					    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue())) {
 					    	
@@ -145,18 +146,18 @@ String nome;
 				        		c=1; celula = linha.getCell((short)c);
 					            String IDSala = celula.getStringCellValue(); c=4;
 					            Identifier bidSala = new ID(IDSala);
-					            System.out.print(IDSala + "\t\t");
+					            //System.out.print(IDSala + "\t\t");
 					            
 					            celula = linha.getCell((short)c);
 					            if(celula == null)
 					            {
 					            	disponivelBool = true; c=3;
-					            	System.out.print("    true");
+					            	//System.out.print("    true");
 					            }
 					            else
 					            {
 					            	disponivelBool = false; c=3;
-					            	System.out.print("    false");
+					            	//System.out.print("    false");
 					            }
 					          
 				        		celula = linha.getCell((short)c);
@@ -164,7 +165,7 @@ String nome;
 					            int aux = (int)nroLugares;
 					            String numeroDeLugares = Integer.toString(aux);
 					            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
-					            System.out.print("\t" + numeroDeLugares);
+					            //System.out.print("\t" + numeroDeLugares);
 					            
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
@@ -173,9 +174,9 @@ String nome;
 					            {
 					            	Feature recursoSala = featureMap.get(f);
 					            	novaSala.addFeature(recursoSala);
-					            	System.out.print("    " + f);
+					            	//System.out.print("    " + f);
 					            }
-					            System.out.println("");
+					            //System.out.println("");
 					            novoPredio.addRoom(novaSala); r++;
 					            linha = planilha.getRow(r);
 					            if(linha != null)
@@ -208,131 +209,166 @@ String nome;
 		List<Course> disciplinas = new ArrayList<Course>();
 		
 		try {
-			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(nome));
+			FileInputStream fs = new FileInputStream(nome);
 		    @SuppressWarnings("resource")
-			HSSFWorkbook wb = new HSSFWorkbook(fs);
+			XSSFWorkbook wb = new XSSFWorkbook(fs);
 		    
 		    //pega dados da segunda planilha a que possui informacoes das disciplinas
-		    HSSFSheet planilha = wb.getSheetAt(0);
+		    XSSFSheet planilha = wb.getSheetAt(0);
 		    
-		    HSSFRow linha, linhaInicial, linhaInicial2;
-		    HSSFCell celula, celulaInicial, celulaInicial2, celulaInicial3;
+		    XSSFRow linha, linhaInicial;
+			XSSFCell celula, celula2, celulaInicial, celulaInicial2, celulaInicialTeste;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
-		    int r=1, r0=0, i=1, ident=0, ident1=1, ident2=4, c=0, d=0, flag=0, acomp=0; //flags
+		    //System.out.println(linhas);
+		    int r=1, i=1, indice = 0, ident=0, ident1=1, ident2=4, c=0; //flags
+		    String testaCelulaVazia;
 		    
 		    while(r<linhas)
 		    {
 		    	linhaInicial 			= planilha.getRow(i);
-			    celulaInicial 			= linhaInicial.getCell((short)ident);
-			    celulaInicial2			= linhaInicial.getCell((short)ident1);
-			    celula 					= linhaInicial.getCell((short)ident);
-			    String NomeDisciplina 	= celulaInicial.getStringCellValue();
-			    String IDDisciplina		= celulaInicial2.getStringCellValue();
-			    Identifier idDisciplina = new ID_Name(IDDisciplina, NomeDisciplina);
-	            Course novaDisciplina 	= new Course(idDisciplina);
-		    		    
-			    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue()))
-			    {	
-			    	linha = planilha.getRow(r);
-		     
-		        	c=2; celula = linha.getCell((short)c);
-		        	String numeroDeAlunos = celula.getStringCellValue(); c=3;
-		        	int NroAlunos = Integer.parseInt(numeroDeAlunos);
-		        	
-		        	celula = linha.getCell((short)c); c=4;
-		        	String professor = celula.getStringCellValue();
-		        	List<String> professores = Arrays.asList(professor.split(""));
-		        	
-		        	celula = linha.getCell((short)c); 
-		        	String IDTurma = celula.getStringCellValue();
-		        	
-		        	Identifier turmaID = new ID(IDTurma);
-		        	Group novaTurma = new Group(NroAlunos, professores, turmaID);
-		        	novaDisciplina.addGroup(novaTurma);
-		        	
-		        	d=r+1; linhaInicial2 = planilha.getRow(d);
-		        	celulaInicial3 = linhaInicial2.getCell((short)ident2);
-		        	
-		        	while(IDTurma.equals(celulaInicial3.getStringCellValue()))
-		        	{
-		        		linha = planilha.getRow(r);
-		        		
-		        		c=9; celula = linha.getCell((short)c);
-			        	String horaInicio = celula.getStringCellValue(); c=6;
-			        	
-			        	celula = linha.getCell((short)c);
-			        	String duracaoString = celula.getStringCellValue(); c=8;
-			        	int duracao;
-			        	if(duracaoString.equals(""))
-			        		duracao = 120;
-			        	else
-			        		duracao = Integer.parseInt(duracaoString);
-			        	
-			        	celula = linha.getCell((short)c);
-			        	String diaDaSemanaString = celula.getStringCellValue(); c=7;
-			        	int diaDaSemana = Integer.parseInt(diaDaSemanaString);
-			        	
-			        	celula = linha.getCell((short)c);
-			        	String recursoDoPredio = celula.getStringCellValue(); c=5;
-			        	Identifier recursoPredioID;
-			        	if(recursoDoPredio.equals(""))
-			        	{
-			        		recursoPredioID = null;
-			        	}
-			        	else
-			        	{
-			        		recursoPredioID = new ID(recursoDoPredio);
-			        	} 
-			        	
-			        	celula = linha.getCell((short)c);
-			        	String recursoDaSala = celula.getStringCellValue();
-			        	Identifier recursoSalaID;
-			        	if(recursoDaSala.equals(""))
-			        	{
-			        		recursoSalaID = null;
-			        	}
-			        	else
-			        	{
-			        		recursoSalaID = new ID(recursoDoPredio);
-			        	}
-		        		
-			        	Session novaSessao = new Session(novaTurma, horaInicio, duracao, diaDaSemana, recursoPredioID, recursoSalaID);
-			        	
-			        	c=13; String recursos1 = celula.getStringCellValue();
-			        	c=14; String recursos2 = celula.getStringCellValue();
-			        	String recursosTotais = recursos1 + "," + recursos2;
-			        	
-			        	if(recursosTotais != null)
-			        	{
-			        		List<String> recursosSala = Arrays.asList(recursosTotais.split(","));
-			        		for(String f : recursosSala)
-			        		{
-			        			Feature requisitoSessao = featureMap.get(f);
-			        			novaSessao.addRequirement(requisitoSessao);
-			        		}
-			        		
-			        	}
-			        	novaDisciplina.getGroups().get(acomp).addSession(novaSessao);acomp++;
-			        	r0 = r++; linhaInicial2 = planilha.getRow(r);
-			        	celulaInicial3 = linha.getCell((short)ident2); 
-			        	flag = 1;
-		        	}
-		        	if(flag == 0)
-		        		r++;
-		        	else
-		        		r = r0;
-		            linha = planilha.getRow(r);
-		            celula = linha.getCell((short)c);
-			    } i=r;
-		    	disciplinas.add(novaDisciplina);
+		    	celulaInicialTeste 		= linhaInicial.getCell((short)ident);
+		    	testaCelulaVazia		= celulaInicialTeste.toString();
+		    	if((linhaInicial != null) && (testaCelulaVazia != ""))
+		    	{
+		    		celulaInicial 			= linhaInicial.getCell((short)ident);
+				    celulaInicial2			= linhaInicial.getCell((short)ident1);
+				    celula 					= linhaInicial.getCell((short)ident1);
+				    if((celulaInicial != null) && (celula != null))
+				    {
+				    	String NomeDisciplina 	= celulaInicial.getStringCellValue();
+				    	//System.out.print(NomeDisciplina + " ");
+					    String IDDisciplina		= celulaInicial2.getStringCellValue();
+					    //System.out.print(IDDisciplina + "\t");
+					    Identifier idDisciplina = new ID_Name(IDDisciplina, NomeDisciplina);
+			            Course novaDisciplina 	= new Course(idDisciplina);
+			            
+				    	
+					    while(celulaInicial2.getStringCellValue().equals(celula.getStringCellValue()))
+					    {
+					    	
+					    	
+					    	linha = planilha.getRow(r);
+					    	if(linha != null)
+					    	{
+					    		c=2; celula = linha.getCell((short)c);
+					    		if(celula != null)
+					    		{
+					    			double numeroDeAlunos = celula.getNumericCellValue(); c=3;
+						        	int aux = (int)numeroDeAlunos;
+							        String numeroDeLugares = Integer.toString(aux);
+						        	int NroAlunos = Integer.parseInt(numeroDeLugares);
+						        	//System.out.print(numeroDeLugares + "\t");
+						        	
+						        	celula = linha.getCell((short)c); c=4;
+						        	String professor = celula.getStringCellValue();
+						        	List<String> professores = Arrays.asList(professor.split(","));
+						        	//for(int j=0; j<professores.size(); j++)
+						        		//System.out.print(professores.get(j) + "  ");
+						        	//System.out.print("");
+						        	celula = linha.getCell((short)c); 
+						        	String IDTurma = celula.getStringCellValue();
+						        	//System.out.print("    " + IDTurma + "\t");
+						        	
+						        	Identifier turmaID = new ID(IDTurma);
+						        	Group novaTurma = new Group(NroAlunos, professores, turmaID);
+						        	novaDisciplina.addGroup(novaTurma); indice++;
+						        	
+					        		celula = linha.getCell((short)ident1);
+					        		celula2 = linha.getCell((short)ident2);
+						        	
+						        	while((IDTurma.equals(celula2.getStringCellValue())) && IDDisciplina.equals(celula.getStringCellValue()))
+						        	{
+						        		linha = planilha.getRow(r);
+						        		if(linha != null)
+						        		{
+						        			c=9; celula = linha.getCell((short)c);
+								        	String horaInicio = celula.getStringCellValue(); c=6;
+								        	//System.out.print(horaInicio + "\t");
+								        	
+								        	celula = linha.getCell((short)c);
+								        	String duracaoString = celula.getStringCellValue(); c=8;
+								        	int duracao;
+								        	if(duracaoString.equals(""))
+								        		duracao = 120;
+								        	else
+								        		duracao = Integer.parseInt(duracaoString);
+								        	//System.out.print(duracao + "\t");
+								        	
+								        	celula = linha.getCell((short)c);
+								        	double diaDaSemana = celula.getNumericCellValue(); c=10;
+								        	int aux2 = (int)diaDaSemana;
+								        	String diaDaSemanaString = Integer.toString(aux2);
+								        	int diaSemana = Integer.parseInt(diaDaSemanaString);
+								        	//System.out.print(diaSemana + "\t");
+								        	
+								        	celula = linha.getCell((short)c);
+								        	String recursoDoPredio = celula.getStringCellValue(); c=11;
+								        	Identifier recursoPredioID;
+								        	if(recursoDoPredio.equals(""))
+								        	{
+								        		recursoPredioID = null;
+								        		//System.out.print("nada \t");
+								        	}
+								        	else
+								        	{
+								        		recursoPredioID = new ID(recursoDoPredio);
+								        		//System.out.print("alguma coisa\t");
+								        	} 
+								        	
+								        	celula = linha.getCell((short)c);
+								        	String recursoDaSala = celula.getStringCellValue();
+								        	Identifier recursoSalaID;
+								        	if(recursoDaSala.equals(""))
+								        	{
+								        		recursoSalaID = null;
+								        		//System.out.print("nada \t");
+								        	}
+								        	else
+								        	{
+								        		recursoSalaID = new ID(recursoDoPredio);
+								        		//System.out.print("alguma coisa\t");
+								        	}
+							        		
+								        	Session novaSessao = new Session(novaTurma, horaInicio, duracao, diaSemana, recursoPredioID, recursoSalaID);
+								        	
+								        	c=13; String recursos1 = celula.getStringCellValue();
+								        	c=14; String recursos2 = celula.getStringCellValue();
+								        	String recursosTotais = recursos1 + "," + recursos2;
+								        	
+								        	
+								        	if(recursosTotais != null)
+								        	{
+								        		List<String> recursosSala = Arrays.asList(recursosTotais.split(","));
+								        		for(String f : recursosSala)
+								        		{
+								        			Feature requisitoSessao = featureMap.get(f);
+								        			novaSessao.addRequirement(requisitoSessao);
+								        			//System.out.print("    " + f);
+								        		}
+								        		
+								        	}
+								        	//System.out.println("    sem recursos");
+								        	//System.out.println(indice-1);
+								        	
+								        	novaDisciplina.getGroups().get(indice-1).addSession(novaSessao); 
+								        	r++; linha = planilha.getRow(r);
+								        	if(linha != null)
+								        	{
+								        		celula2 = linha.getCell((short)ident2);
+									        	celula = linha.getCell((short)ident1);
+								        	}	
+						        		}	
+						        	}
+					    		}
+					    	}		     
+					    } i=r; indice = 0; 
+				    	disciplinas.add(novaDisciplina);
+				    }
+		    	}
 		    }
-		    	
-		
 		} catch(Exception ioe) {
     			ioe.printStackTrace();
     		}
-		
 		return disciplinas;
 	}
-
 }
