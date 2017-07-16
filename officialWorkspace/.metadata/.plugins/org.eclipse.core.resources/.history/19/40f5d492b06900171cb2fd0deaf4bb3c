@@ -120,6 +120,7 @@ String nome;
 		    XSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
 		    System.out.println(linhas);
+		    String salaDisponivel;
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
 		    
@@ -161,10 +162,9 @@ String nome;
 					          
 				        		celula = linha.getCell((short)c);
 					            double nroLugares = celula.getNumericCellValue(); c=2;
-					            int aux = (int)nroLugares;
-					            String numeroDeLugares = Integer.toString(aux);
+					            String numeroDeLugares = Double.toString(nroLugares);
+					            System.out.println("\t" + numeroDeLugares);
 					            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
-					            System.out.print("\t" + numeroDeLugares);
 					            
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
@@ -173,13 +173,12 @@ String nome;
 					            {
 					            	Feature recursoSala = featureMap.get(f);
 					            	novaSala.addFeature(recursoSala);
-					            	System.out.print("    " + f);
 					            }
-					            System.out.println("");
+					            
 					            novoPredio.addRoom(novaSala); r++;
 					            linha = planilha.getRow(r);
-					            if(linha != null)
-					            	celula = linha.getCell((short)c);
+					            celula = linha.getCell((short)c);
+				        		
 				        	}
 				        	
 					    } i=r; //atribuicao para setar para linha certa na planilha

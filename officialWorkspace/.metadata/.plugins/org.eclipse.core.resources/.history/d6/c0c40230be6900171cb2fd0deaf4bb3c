@@ -120,6 +120,7 @@ String nome;
 		    XSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
 		    System.out.println(linhas);
+		    String salaDisponivel;
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
 		    

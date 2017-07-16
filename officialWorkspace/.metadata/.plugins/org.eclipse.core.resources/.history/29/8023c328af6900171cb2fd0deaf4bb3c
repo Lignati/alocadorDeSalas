@@ -120,7 +120,7 @@ String nome;
 		    XSSFCell celula, celulaInicial;
 		    int linhas = planilha.getPhysicalNumberOfRows(); // Numero de linhas
 		    System.out.println(linhas);
-		    boolean disponivelBool;
+		    
 		    int c=0, i=1, ident=0, r=1; //flags
 		    
 		    while(r<linhas)
@@ -135,53 +135,43 @@ String nome;
 				    	String IDPredio 	= celulaInicial.getStringCellValue();		    
 					    Identifier bid 		= new ID(IDPredio);
 			            Building novoPredio = new Building(bid);
-			            System.out.println(IDPredio + "\t\t");
+			            System.out.println(IDPredio);
 				    		    
 					    while(celulaInicial.getStringCellValue().equals(celula.getStringCellValue())) {
 					    	
 					        linha = planilha.getRow(r);
-				        	if(linha != null)
-				        	{
-				        		c=1; celula = linha.getCell((short)c);
-					            String IDSala = celula.getStringCellValue(); c=4;
-					            Identifier bidSala = new ID(IDSala);
-					            System.out.print(IDSala + "\t\t");
-					            
-					            celula = linha.getCell((short)c);
-					            if(celula == null)
-					            {
-					            	disponivelBool = true; c=3;
-					            	System.out.print("    true");
-					            }
-					            else
-					            {
-					            	disponivelBool = false; c=3;
-					            	System.out.print("    false");
-					            }
-					          
-				        		celula = linha.getCell((short)c);
-					            double nroLugares = celula.getNumericCellValue(); c=2;
-					            int aux = (int)nroLugares;
-					            String numeroDeLugares = Integer.toString(aux);
-					            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
-					            System.out.print("\t" + numeroDeLugares);
-					            
-					            celula = linha.getCell((short)c);
-					            String IDRecursos = celula.getStringCellValue(); c=0;
-					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
-					            for(String f : RecursosSala)
-					            {
-					            	Feature recursoSala = featureMap.get(f);
-					            	novaSala.addFeature(recursoSala);
-					            	System.out.print("    " + f);
-					            }
-					            System.out.println("");
-					            novoPredio.addRoom(novaSala); r++;
-					            linha = planilha.getRow(r);
-					            if(linha != null)
-					            	celula = linha.getCell((short)c);
-				        	}
 				        	
+				        	c=1; celula = linha.getCell((short)c);
+				            String IDSala = celula.getStringCellValue(); c=4;
+				            Identifier bidSala = new ID(IDSala);
+				            
+				            celula = linha.getCell((short)c);
+				            String salaDisponivel = celula.getStringCellValue(); c=3;
+				            if(salaDisponivel.equals(""))
+				            	salaDisponivel = "true";
+				            
+			        		boolean disponivelBool;
+			        		if(salaDisponivel.equals("true"))
+			        			disponivelBool = true;
+			        		else
+			        			disponivelBool = false;
+			        		
+			        		celula = linha.getCell((short)c);
+				            String numeroDeLugares = celula.getStringCellValue(); c=2;
+				            Room novaSala = new Room(bidSala, Integer.parseInt(numeroDeLugares), disponivelBool);
+				            
+				            celula = linha.getCell((short)c);
+				            String IDRecursos = celula.getStringCellValue(); c=0;
+				            List<String> RecursosSala = Arrays.asList(IDRecursos.split(","));
+				            for(String f : RecursosSala)
+				            {
+				            	Feature recursoSala = featureMap.get(f);
+				            	novaSala.addFeature(recursoSala);
+				            }
+				            
+				            novoPredio.addRoom(novaSala); r++;
+				            linha = planilha.getRow(r);
+				            celula = linha.getCell((short)c);
 					    } i=r; //atribuicao para setar para linha certa na planilha
 					    predios.add(novoPredio);
 				    }

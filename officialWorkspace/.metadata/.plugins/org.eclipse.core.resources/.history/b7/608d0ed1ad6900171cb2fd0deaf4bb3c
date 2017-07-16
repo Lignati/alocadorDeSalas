@@ -36,10 +36,9 @@ public class TCP {
 		
 		List<Feature> recursos = arq2.montaRecursos();
 		
-		
+		/*
 		List<Building> buildings = arq2.montaPredios();
 		
-		/*
 		List<Course> disciplinas = arq2.montaDisciplinas();
 		
 		RAAPI.mergeSessionsByTeacher(disciplinas);
