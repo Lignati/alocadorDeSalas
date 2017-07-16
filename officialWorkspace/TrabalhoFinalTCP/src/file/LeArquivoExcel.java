@@ -346,7 +346,6 @@ String nome;
 								        		
 								        	}
 								        	//System.out.println("    sem recursos");
-								        	//System.out.println(indice-1);
 								        	
 								        	novaDisciplina.getGroups().get(indice-1).addSession(novaSessao); 
 								        	r++; linha = planilha.getRow(r);
@@ -356,10 +355,12 @@ String nome;
 									        	celula = linha.getCell((short)ident1);
 								        	}	
 						        		}	
+						        		
 						        	}
 					    		}
 					    	}		     
 					    } i=r; indice = 0; 
+					    System.out.println(r);
 				    	disciplinas.add(novaDisciplina);
 				    }
 		    	}

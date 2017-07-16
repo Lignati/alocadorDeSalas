@@ -31,29 +31,32 @@ public class TCP {
 		}
 		*/
 		
-		//Allocation al;
+		Allocation al;
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
-		
+		System.out.println("1");
+
 		
 		List<Building> buildings = arq2.montaPredios();
-		
+		System.out.println("2");
+
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
-		/*
 		
+		System.out.println("3");
+
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		
 		List<Session> sessoes = new ArrayList<Session>();
 		
-		for(Course c : disciplinas)
+		/*for(Course c : disciplinas)
 		{
 			for(Session s : c.getSessions())
 			{
 				sessoes.add(s);
 			}
-		}
+		}*/
 	
 		RAAPI.allocateSessions(buildings, sessoes);
 		
@@ -72,7 +75,7 @@ public class TCP {
 
 
 
-
+		System.out.println("aaaa");
 		
 		
 		
@@ -84,7 +87,7 @@ public class TCP {
 		//					   -- i've nothing left to say, its only words
 		// trecho de um proverbio chines autor desconhecido
 		// ps falta escrever no arquivo xml e xsl! 
-		*/
+		
 	}
 
 }
