@@ -3,7 +3,7 @@ import file.*;
 //import domain.*;
 import org.raapi.*;
 import java.io.*;
-
+import org.apache.*;
 
 
 public class TCP {
@@ -31,7 +31,7 @@ public class TCP {
 		}
 		*/
 		
-		Allocation al;
+		//Allocation al;
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
@@ -42,7 +42,7 @@ public class TCP {
 		
 		List<Course> disciplinas = arq2.montaDisciplinas();
 		System.out.print("3");
-		
+		/*
 		
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		
@@ -85,7 +85,7 @@ public class TCP {
 		//					   -- i've nothing left to say, its only words
 		// trecho de um proverbio chines autor desconhecido
 		// ps falta escrever no arquivo xml e xsl! 
-		
+		*/
 	}
 
 }
