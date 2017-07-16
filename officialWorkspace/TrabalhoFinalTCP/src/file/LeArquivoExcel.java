@@ -122,7 +122,7 @@ String nome;
 		    //System.out.println(linhas);
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
-		    
+		    System.out.println(linhas);
 		    while(r<linhas)
 		    {
 		    	linhaInicial 		= planilha.getRow(i);

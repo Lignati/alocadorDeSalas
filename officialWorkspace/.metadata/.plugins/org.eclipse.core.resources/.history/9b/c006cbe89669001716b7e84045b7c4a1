@@ -1,48 +1,39 @@
 import java.util.*;
 import file.*;
-//import domain.*;
+import domain.*;
 import org.raapi.*;
 import java.io.*;
-import org.apache.*;
 
 
 public class TCP {
 	public static void main(String [ ] args)
 	{
-		/*
 		AbreArquivo arquivo = new AbreArquivo("x.xml");
-		//arquivo.montaListaDisciplinas();
-		//arquivo.montaListaPredios();
+		arquivo.montaListaDisciplinas();
+		arquivo.montaListaPredios();
 		Alocador alocador = new Alocador(arquivo.getPredios(), arquivo.getDisciplinas());
-		//alocador.montaFichas();
+		alocador.montaFichas();
 		for(int i = 0; i< alocador.getFichas().size(); i++){
 			
 			//System.out.println(alocador.getFichas().toString());
 			
 			
 		}
-		//alocador.ordenaPrioridadesSala();
+		alocador.ordenaPrioridadesSala();
 		
-		//alocador.AlocaSala();
+		alocador.AlocaSala();
 		List<Predio> predios = alocador.getPredios();
 		for(int i = 0; i < predios.size();i++){
-		//	alocador.getPredios().get(i).imprimePredio();
+			alocador.getPredios().get(i).imprimePredio();
 			
 		}
-		*/
 		
-		//Allocation al;
+		Allocation al;
 		LeArquivoExcel arq2 = new LeArquivoExcel("y.xlsx");
 		
 		List<Feature> recursos = arq2.montaRecursos();
-		System.out.print("1");
-		
 		List<Building> buildings = arq2.montaPredios();
-		System.out.print("2");
-		
 		List<Course> disciplinas = arq2.montaDisciplinas();
-		System.out.print("3");
-		/*
 		
 		RAAPI.mergeSessionsByTeacher(disciplinas);
 		
@@ -60,7 +51,7 @@ public class TCP {
 		
 		
 		al = new Allocation(disciplinas, buildings, recursos);
-		try {
+		/*try {
 			RAAPI.createXML(al, "saida.xml");
 	
 	            
@@ -69,7 +60,7 @@ public class TCP {
 	        catch (IOException e)
 	        {
 	            System.out.println("EXCEPTION");
-	        }
+	        }*/
 
 
 
@@ -79,13 +70,12 @@ public class TCP {
 		
 		
 		
-		// 14/07/2017 03:07 AM -- eh soh isso, nao tem mais jeito, acabou, boa sorte
-		//					   -- nao tenho o que dizer, sao soh palavras
+		// 14/07/2017 03:07 AM -- � s� isso, nao tem mais jeito, acabou, boa sorte
+		//					   -- nao tenho o que dizer, sao s� palavras
 		//					   -- thats it, theres no way, its over, good luck
 		//					   -- i've nothing left to say, its only words
-		// trecho de um proverbio chines autor desconhecido
+		// trecho de um prov�rbio chines autor desconhecido
 		// ps falta escrever no arquivo xml e xsl! 
-		*/
 	}
 
 }
