@@ -61,8 +61,15 @@ String nome;
 		                celula = linha.getCell((short)c);
 		                if(celula != null)
 		                {
+		                	
+
+		                	
+		                	
+		                	
+		                	
+		                	
 		                	double id = celula.getNumericCellValue();
-			                IDRecurso = Double.toString(id); c++;
+			                IDRecurso = Integer.toString((int)id); c++;
 			                //System.out.print(IDRecurso + "\t");
 			                Identifier IdRec = new ID_Name(IDRecurso, NomeRecurso);
 			                celula = linha.getCell((short)c);
@@ -106,7 +113,11 @@ String nome;
 	    
 	    for(Feature f : recursos){
             String featID = f.getIdentifier().getId();
+           // System.out.println(f);
+            
             featureMap.put(featID, f);
+            System.out.println(featID);
+            
         }
 		
 		try {
@@ -122,7 +133,7 @@ String nome;
 		    //System.out.println(linhas);
 		    boolean disponivelBool;
 		    int c=0, i=1, ident=0, r=1; //flags
-		    System.out.println(linhas);
+		    //System.out.println(linhas);
 		    while(r<linhas)
 		    {
 		    	linhaInicial 		= planilha.getRow(i);
@@ -168,23 +179,29 @@ String nome;
 					            
 					            celula = linha.getCell((short)c);
 					            String IDRecursos = celula.getStringCellValue(); c=0;
-					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(", "));
-					            //System.out.println(RecursosSala.get(0));
+					            //System.out.println(IDRecursos);
+					            List<String> RecursosSala = Arrays.asList(IDRecursos.split(", ?"));
+					            //System.out.println(RecursosSala.get(1));
+					            
 					            for(String f : RecursosSala)
 					            {
 					            	Feature recursoSala = featureMap.get(f);
+					            	System.out.println(featureMap.get(f));
 					            	novaSala.addFeature(recursoSala);
 					            	//System.out.print("    " + f);
 					            }
 					            //System.out.println("");
-					            novoPredio.addRoom(novaSala); r++;
-					            linha = planilha.getRow(r);
-					            if(linha != null)
-					            	celula = linha.getCell((short)c);
+					            if(novaSala != null){
+						            novoPredio.addRoom(novaSala); r++;
+						            linha = planilha.getRow(r);
+						            if(linha != null)
+						            	celula = linha.getCell((short)c);
+					            }
 				        	}
 				        	
 					    } i=r; //atribuicao para setar para linha certa na planilha
-					    predios.add(novoPredio);
+					    if(novoPredio != null)
+					    	predios.add(novoPredio);
 				    }
 				    
 		    	}
